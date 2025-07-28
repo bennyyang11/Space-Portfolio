@@ -48,7 +48,7 @@ class SpacePortfolio {
             mercury: {
                 title: "Sorting Visualizer",
                 description: "This project is an interactive sorting visualizer that demonstrates how various sorting algorithms work in real-time. Users can choose from algorithms like Bubble Sort, Merge Sort, Quick Sort, Insertion Sort, and Selection Sort to observe how data is sorted step-by-step. It also allows users to customize the number of items being sorted and the speed of the animation, providing a hands-on, visual learning experience for understanding algorithm efficiency and behavior. The visualizer was built using JavaScript and React, utilizing state and animation hooks to control bar height, algorithm logic, and playback controls. This project helped strengthen my understanding of sorting algorithms, algorithmic complexity, and front-end UI interaction using component-based design.",
-                image: "assets/images/projects/Sorting_Visualizer.png",
+                image: "images/projects/Sorting_Visualizer.png",
                 features: [
                     "Interactive visualization of 5+ sorting algorithms",
                     "Real-time step-by-step algorithm demonstration",
@@ -62,7 +62,7 @@ class SpacePortfolio {
             venus: {
                 title: "Product Management API",
                 description: "This API serves as a backend system for managing product data in applications such as e-commerce platforms or inventory tracking systems. It allows clients to create, read, update, and delete (CRUD) product entries efficiently, making it an essential tool for any service that needs to handle dynamic product information. Built with Node.js and Express, the API uses MongoDB as the database to store and query product data. It includes endpoints for managing product attributes such as name, category, price, stock quantity, and more. The backend features optimized query performance, robust error handling, and a clean RESTful architecture to ensure scalability and seamless integration with frontend or third-party systems.",
-                image: "assets/images/projects/CRUD.png",
+                image: "images/projects/CRUD.png",
                 features: [
                     "Complete CRUD operations for product management",
                     "RESTful API architecture with Express.js",
@@ -76,7 +76,7 @@ class SpacePortfolio {
             earth: {
                 title: "Hamster Hunters - Multiplayer 3D FPS",
                 description: "An ambitious and hilariously creative multiplayer 3D first-person shooter that combines the intensity of Call of Duty with adorable hamsters! This browser-based game features real-time multiplayer combat with Socket.io, complete character class systems, and multiple game modes. Players can choose from unique hamster characters like 'Hammy Ali' and 'Ham Solo', each with distinct abilities and playstyles. The game includes sophisticated weapon mechanics, multiple combat scenarios, and supports 8-12 concurrent players with optimized performance targeting 60 FPS and sub-50ms latency. Built entirely with Three.js and JavaScript, this project showcases advanced 3D web development, real-time networking, and game design principles while maintaining a fun and engaging theme that makes competitive gaming accessible and enjoyable.",
-                image: "assets/images/projects/Hamster_Hunters.png",
+                image: "images/projects/Hamster_Hunters.png",
                 features: [
                     "Real-time multiplayer 3D FPS with Socket.io networking",
                     "Unique hamster character classes and specialized abilities",
@@ -91,7 +91,7 @@ class SpacePortfolio {
             mars: {
                 title: "WordWiseAI - AI-Powered Writing Assistant",
                 description: "An intelligent writing companion that leverages OpenAI's advanced language models to transform how people write and communicate. This comprehensive platform provides real-time AI-powered writing suggestions, goal-based feedback systems, and interactive vocabulary enhancement tools. Built with modern TypeScript and React, WordWiseAI offers personalized writing improvement through sophisticated AI analysis that adapts to individual writing styles and objectives. The application features dynamic content analysis, contextual suggestions, and progressive learning modules that help users develop stronger writing skills over time. Whether for academic writing, professional communication, or creative expression, WordWiseAI serves as an intelligent writing mentor that provides actionable insights and improvements.",
-                image: "assets/images/projects/WordWiseAI.png",
+                image: "images/projects/WordWiseAI.png",
                 features: [
                     "Real-time AI writing suggestions and grammar corrections",
                     "Goal-based feedback system for targeted improvement",
@@ -106,7 +106,7 @@ class SpacePortfolio {
             jupiter: {
                 title: "FlowGenius - AI-Enhanced File Manager",
                 description: "A revolutionary desktop application that transforms file management through artificial intelligence. Built with Electron, LangGraph, and N8N, FlowGenius automatically analyzes, classifies, and organizes files using advanced AI workflows. The application combines real-time file monitoring with sophisticated content understanding, generating intelligent tags and suggesting optimal folder structures. With its modern React interface featuring multi-tab navigation, users can browse files, view detailed AI analysis, monitor background processing, and configure automation settings. FlowGenius represents the future of intelligent file management, where files organize themselves based on content understanding rather than manual sorting. The system processes documents, code files, media, and archives with confidence scoring, ensuring reliable automation while maintaining user control over all organizational decisions.",
-                image: "assets/images/projects/FlowGenius.png",
+                image: "images/projects/FlowGenius.png",
                 features: [
                     "AI-powered file classification and content analysis",
                     "Real-time directory monitoring and automated organization",
@@ -120,7 +120,7 @@ class SpacePortfolio {
             saturn: {
                 title: "Polisee - AI-Powered Political Engagement Platform",
                 description: "A groundbreaking open-source platform that democratizes political engagement through AI-powered bill analysis and personalized impact assessment. Originally developed as a collaborative group project, Polisee has evolved into a comprehensive civic technology solution that bridges the gap between complex legislation and citizen understanding. The platform leverages advanced AI workflows to analyze congressional bills, generate personalized impact reports based on user demographics, and provide verifiable source citations. Built with modern full-stack architecture featuring Next.js 15, TypeScript, and Supabase, Polisee integrates multiple APIs including Congress.gov for legislative data and OpenAI for intelligent analysis. The system includes sophisticated features like multi-step persona creation, advanced PDF viewing with text highlighting, sentiment feedback mechanisms, and real-time analytics, all designed to empower citizens with accessible, accurate political information.",
-                image: "assets/images/projects/Polisee.png",
+                image: "images/projects/Polisee.png",
                 features: [
                     "AI-powered personalized bill analysis with OpenAI integration",
                     "Multi-step persona creation for demographic profiling",
@@ -135,7 +135,7 @@ class SpacePortfolio {
             uranus: {
                 title: "SnapConnect - AI-Powered Fitness Content Creator",
                 description: "A revolutionary mobile fitness application that transforms content creation through advanced AI integration and personalized engagement. Built with React Native and Expo, SnapConnect leverages multiple AI models including DALL-E 3, DALL-E 2, and Stable Diffusion XL to generate intelligent fitness content. The app features sophisticated RAG (Retrieval-Augmented Generation) implementation that creates personalized workout captions, motivational content, and AI-generated stickers tailored to individual fitness journeys. With Firebase backend integration, Zustand state management, and professional mobile architecture, SnapConnect targets fitness influencers and content creators seeking to enhance their social media presence. The application includes advanced prompt engineering, automatic background removal for AI stickers, context-aware content generation, and smart workout planning features, representing the cutting edge of mobile AI development in the fitness industry.",
-                image: "assets/images/projects/SnapConnect.png",
+                image: "images/projects/SnapConnect.png",
                 features: [
                     "Multiple AI model integration (DALL-E 3, DALL-E 2, Stable Diffusion XL)",
                     "RAG implementation for personalized fitness content generation",
@@ -149,7 +149,7 @@ class SpacePortfolio {
             neptune: {
                 title: "RISC-V Processor - 5-Stage Pipelined CPU",
                 description: "A comprehensive implementation of a 5-stage pipelined RISC-V processor built from scratch using Verilog, demonstrating deep understanding of computer architecture and hardware design principles. This project simulates how modern CPUs efficiently handle multiple instructions concurrently through instruction fetch, decode, execute, memory access, and write-back stages. The processor includes sophisticated features such as hazard detection mechanisms, data forwarding pathways, and advanced control logic to manage pipeline stalls while maintaining correct execution order. Built with a custom instruction set and rigorously tested through comprehensive verification, this hands-on implementation showcases mastery of CPU design fundamentals, timing constraints, and hardware debugging methodologies. The project represents the intersection of theoretical computer architecture knowledge and practical hardware implementation skills.",
-                image: "assets/images/projects/RiscV.png",
+                image: "images/projects/RiscV.png",
                 features: [
                     "5-stage pipelined architecture (Fetch, Decode, Execute, Memory, Writeback)",
                     "Hazard detection and data forwarding for pipeline optimization",
@@ -284,14 +284,14 @@ class SpacePortfolio {
         this.createSun();
         
                 // Create Planets with wider orbits to prevent overlapping
-        this.createPlanet('mercury', 25, 0xff6b47, 8, 'assets/models/Mercury.glb', 0);
-        this.createPlanet('venus', 0.02, 0xffc649, 12, 'assets/models/Venus.glb', Math.PI * 0.3);
-        this.createPlanet('earth', 0.06, 0x6b93d6, 16, 'assets/models/Earth-2.glb', Math.PI * 0.6);
+        this.createPlanet('mercury', 25, 0xff6b47, 8, 'models/Mercury.glb', 0);
+        this.createPlanet('venus', 0.02, 0xffc649, 12, 'models/Venus.glb', Math.PI * 0.3);
+        this.createPlanet('earth', 0.06, 0x6b93d6, 16, 'models/Earth-2.glb', Math.PI * 0.6);
         this.createPlanet('mars', 1.33, 0xff4500, 20, null, Math.PI * 0.9); // Red sphere - Mars models have compatibility issues
-        this.createPlanet('jupiter', 0.25, 0xd8ca9d, 26, 'assets/models/Jupiter.glb', Math.PI * 1.2);
-        this.createPlanet('saturn', 2.5, 0xfad5a5, 32, 'assets/models/Saturn.glb', Math.PI * 1.5);
-        this.createPlanet('uranus', 2.5, 0x4fd0e7, 38, 'assets/models/Uranus.glb', Math.PI * 1.8);
-        this.createPlanet('neptune', 2.5, 0x4169E1, 44, 'assets/models/Neptune.glb', Math.PI * 0.1);
+        this.createPlanet('jupiter', 0.25, 0xd8ca9d, 26, 'models/Jupiter.glb', Math.PI * 1.2);
+        this.createPlanet('saturn', 2.5, 0xfad5a5, 32, 'models/Saturn.glb', Math.PI * 1.5);
+        this.createPlanet('uranus', 2.5, 0x4fd0e7, 38, 'models/Uranus.glb', Math.PI * 1.8);
+        this.createPlanet('neptune', 2.5, 0x4169E1, 44, 'models/Neptune.glb', Math.PI * 0.1);
         
         // Moon removed for now
     }
@@ -299,7 +299,7 @@ class SpacePortfolio {
     createSun() {
         console.log('Loading Sun model...');
         // Load 3D Sun model
-        this.loader.load('assets/models/Sun.glb', (gltf) => {
+        this.loader.load('models/Sun.glb', (gltf) => {
             this.sun = gltf.scene;
             
             // Scale the sun much bigger - same size as planets

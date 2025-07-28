@@ -15,66 +15,75 @@ class SpacePortfolio {
         this.clock = new THREE.Clock();
         this.loader = new GLTFLoader();
         
-        // Simplified camera state - always overview
-        this.cameraState = 'overview';
+        // Camera state management for planet zoom
+        this.cameraState = 'overview'; // 'overview' or 'planet'
+        this.selectedPlanet = null;
+        this.cameraTransition = {
+            active: false,
+            progress: 0,
+            duration: 2.0,
+            startPosition: new THREE.Vector3(),
+            targetPosition: new THREE.Vector3(),
+            startLookAt: new THREE.Vector3(),
+            targetLookAt: new THREE.Vector3()
+        };
         
         // Project data - you can modify this to add your actual projects
         this.projectData = {
             sun: {
-                title: "About Me",
-                description: "Welcome to my portfolio! I'm a passionate developer who loves creating interactive experiences. The sun represents the core of my journey in tech.",
-                demo: "#",
-                github: "#"
+                title: "Ben Yang - Full Stack Developer",
+                description: "Welcome to my interactive portfolio! I'm a passionate full-stack developer with expertise in modern web technologies, 3D graphics, and innovative user experiences. This solar system represents my journey through different projects and technologies.",
+                tech: ["JavaScript", "React", "Node.js", "Three.js", "Python", "AWS"],
+                link: "https://github.com/bennyyang11"
             },
             mercury: {
-                title: "Project Mercury",
-                description: "A fast and lightweight web application built with modern technologies. This project showcases my skills in frontend development.",
-                demo: "#",
-                github: "#"
+                title: "QuickChat - Real-time Messaging App",
+                description: "A lightning-fast real-time chat application built with WebSocket technology. Features include instant messaging, file sharing, emoji reactions, and typing indicators. Designed for speed and efficiency just like Mercury!",
+                tech: ["React", "Node.js", "Socket.io", "MongoDB", "Redis"],
+                link: "https://github.com/bennyyang11/quickchat"
             },
             venus: {
-                title: "Project Venus",
-                description: "A beautiful and responsive design system. This project demonstrates my expertise in UI/UX design and CSS animations.",
-                demo: "#",
-                github: "#"
+                title: "VenusUI - Design System Library", 
+                description: "A beautiful and elegant React component library focused on accessibility and design consistency. Features customizable themes, responsive layouts, and smooth animations that make any application look stunning.",
+                tech: ["React", "TypeScript", "Styled Components", "Storybook", "Figma"],
+                link: "https://github.com/bennyyang11/venus-ui"
             },
             earth: {
-                title: "Project Earth",
-                description: "A full-stack application that connects people and ideas. Built with Node.js, React, and MongoDB.",
-                demo: "#",
-                github: "#"
+                title: "EcoTracker - Sustainability Platform",
+                description: "My home planet inspired this environmental impact tracking platform. Users can monitor their carbon footprint, set sustainability goals, and connect with eco-friendly communities. Built with love for our planet!",
+                tech: ["Next.js", "PostgreSQL", "Prisma", "Chart.js", "Docker"],
+                link: "https://github.com/bennyyang11/eco-tracker"
             },
             mars: {
-                title: "Project Mars",
-                description: "An ambitious machine learning project that explores data analysis and prediction algorithms.",
-                demo: "#",
-                github: "#"
+                title: "MarsColony - Space Exploration Game",
+                description: "An ambitious browser-based strategy game where players build and manage colonies on Mars. Features resource management, terraforming mechanics, and multiplayer cooperation. The red planet awaits!",
+                tech: ["Three.js", "WebGL", "Canvas API", "WebRTC", "Firebase"],
+                link: "https://github.com/bennyyang11/mars-colony"
             },
             jupiter: {
-                title: "Project Jupiter",
-                description: "A large-scale enterprise solution with microservices architecture. Showcases my backend development skills.",
-                demo: "#",
-                github: "#"
+                title: "JupiterDB - Distributed Database System",
+                description: "A massive and complex distributed database system designed for handling large-scale applications. Features automatic sharding, replication, and fault tolerance. As powerful and vast as Jupiter itself!",
+                tech: ["Go", "Kubernetes", "Redis", "Protocol Buffers", "Raft Consensus"],
+                link: "https://github.com/bennyyang11/jupiter-db"
             },
             saturn: {
-                title: "Project Saturn",
-                description: "A comprehensive enterprise platform with beautiful ring architecture. Features scalable microservices design.",
-                demo: "#",
-                github: "#"
+                title: "SaturnRings - Task Management Platform",
+                description: "A beautifully structured project management platform with powerful organizational features. Teams can create projects, assign tasks, track progress, and collaborate seamlessly within Saturn's elegant rings of productivity.",
+                tech: ["Vue.js", "Express.js", "MongoDB", "GraphQL", "Jest"],
+                link: "https://github.com/bennyyang11/saturn-rings"
             },
             uranus: {
-                title: "Project Uranus",
-                description: "An innovative tilted approach to problem solving. Unique perspective on conventional development challenges.",
-                demo: "#",
-                github: "#"
+                title: "UranusVR - Virtual Reality Experience",
+                description: "A unique and unconventional VR experience that lets users explore impossible geometries and mind-bending physics. This experimental project pushes the boundaries of what's possible in virtual reality.",
+                tech: ["A-Frame", "WebXR", "Three.js", "WebGL", "Blender"],
+                link: "https://github.com/bennyyang11/uranus-vr"
             },
             neptune: {
-                title: "Project Neptune",
-                description: "An advanced data analytics platform with machine learning capabilities. Deep dive into complex algorithms.",
-                demo: "#",
-                github: "#"
-            },
-
+                title: "NeptuneAI - Deep Learning Platform",
+                description: "A deep and mysterious machine learning platform for training and deploying AI models. Features automated hyperparameter tuning, model versioning, and scalable inference pipelines. Dive deep into the ocean of artificial intelligence!",
+                tech: ["Python", "TensorFlow", "Docker", "Kubernetes", "MLflow"],
+                link: "https://github.com/bennyyang11/neptune-ai"
+            }
         };
 
         this.init();
@@ -288,12 +297,38 @@ class SpacePortfolio {
                     clickable: true 
                 };
                 
+                // Create invisible larger hitbox for easier clicking - with special Mercury handling
+                let hitboxSize = 1.0; // Default hitbox for most planets
+                
+                // Special handling for Mercury's massive scale (25x)
+                if (name.toLowerCase() === 'mercury') {
+                    hitboxSize = 0.15; // Extra small hitbox for Mercury
+                }
+                
+                // Debug Earth specifically
+                if (name.toLowerCase() === 'earth') {
+                    console.log('Creating Earth hitbox - planet size:', size, 'hitbox size:', hitboxSize);
+                }
+                const hitboxGeometry = new THREE.SphereGeometry(hitboxSize, 16, 16);
+                const hitboxMaterial = new THREE.MeshBasicMaterial({ 
+                    transparent: true, 
+                    opacity: 0,
+                    visible: false // Completely invisible
+                });
+                const hitbox = new THREE.Mesh(hitboxGeometry, hitboxMaterial);
+                hitbox.userData = { type: 'hitbox', planetName: name };
+                console.log(`GLB hitbox created for ${name}:`, hitbox.userData);
+                planet.add(hitbox);
+                
+                console.log(`${name} hitbox: planet size ${size} → hitbox size ${hitboxSize.toFixed(2)}`);
+                
                 planetGroup.add(planet);
                 
-                // Store planet data with better speed calculation
+                // Store planet data with better speed calculation and hitbox
                 this.planets.push({
                     group: planetGroup,
                     mesh: planet,
+                    hitbox: hitbox,
                     name: name,
                     distance: distance,
                     speed: 0.02 / Math.sqrt(distance) // More realistic orbital speed
@@ -321,11 +356,37 @@ class SpacePortfolio {
                     clickable: true 
                 };
                 
+                // Create invisible larger hitbox for easier clicking (fallback) - with special Mercury handling
+                let hitboxSize = 1.0; // Default hitbox for most planets
+                
+                // Special handling for Mercury's massive scale (25x)
+                if (name.toLowerCase() === 'mercury') {
+                    hitboxSize = 0.15; // Extra small hitbox for Mercury
+                }
+                
+                // Debug Earth specifically
+                if (name.toLowerCase() === 'earth') {
+                    console.log('Creating Earth FALLBACK hitbox - planet size:', size, 'hitbox size:', hitboxSize);
+                }
+                const hitboxGeometry = new THREE.SphereGeometry(hitboxSize, 16, 16);
+                const hitboxMaterial = new THREE.MeshBasicMaterial({ 
+                    transparent: true, 
+                    opacity: 0,
+                    visible: false
+                });
+                const hitbox = new THREE.Mesh(hitboxGeometry, hitboxMaterial);
+                hitbox.userData = { type: 'hitbox', planetName: name };
+                console.log(`Fallback hitbox created for ${name}:`, hitbox.userData);
+                fallbackPlanet.add(hitbox);
+                
+                console.log(`${name} fallback hitbox: planet size ${size} → hitbox size ${hitboxSize.toFixed(2)}`);
+                
                 planetGroup.add(fallbackPlanet);
                 
                 this.planets.push({
                     group: planetGroup,
                     mesh: fallbackPlanet,
+                    hitbox: hitbox,
                     name: name,
                     distance: distance,
                     speed: 0.02 / Math.sqrt(distance)
@@ -441,19 +502,27 @@ class SpacePortfolio {
         
         if (closeBtn) {
             closeBtn.addEventListener('click', () => {
-                modal.style.display = 'none';
+                this.zoomToOverview();
             });
         }
         
         // Close modal when clicking outside
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
-                modal.style.display = 'none';
+                this.zoomToOverview();
+            }
+        });
+        
+        // Add escape key listener for returning to overview
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.cameraState === 'planet') {
+                this.zoomToOverview();
             }
         });
     }
 
     onMouseClick(event) {
+        const self = this; // Store reference for nested functions
         console.log('Mouse click detected!', event.clientX, event.clientY);
         
         // Calculate mouse position in normalized device coordinates
@@ -465,16 +534,29 @@ class SpacePortfolio {
         // Update the raycaster
         this.raycaster.setFromCamera(this.mouse, this.camera);
 
-        // Get all clickable objects
+        // Get all clickable objects (including hitboxes for easier clicking)
         const clickableObjects = [];
         
         // Add sun if it exists
         if (this.sun) {
+            // Create larger hitbox for sun if it doesn't exist
+            if (!this.sun.userData.hitbox) {
+                const sunHitboxGeometry = new THREE.SphereGeometry(.5, 16, 16);
+                const sunHitboxMaterial = new THREE.MeshBasicMaterial({ 
+                    transparent: true, 
+                    opacity: 0,
+                    visible: false
+                });
+                const sunHitbox = new THREE.Mesh(sunHitboxGeometry, sunHitboxMaterial);
+                sunHitbox.userData = { type: 'hitbox', planetName: 'sun' };
+                this.sun.add(sunHitbox);
+                this.sun.userData.hitbox = sunHitbox;
+            }
             clickableObjects.push(this.sun);
             console.log('Added sun to clickable objects');
         }
         
-        // Add planets if they exist
+        // Add planets and their hitboxes
         this.planets.forEach(planet => {
             if (planet.mesh) {
                 clickableObjects.push(planet.mesh);
@@ -510,26 +592,78 @@ class SpacePortfolio {
         if (intersects.length > 0) {
             const clickedObject = intersects[0].object;
             console.log('Clicked object:', clickedObject);
+            console.log('Clicked object userData:', clickedObject.userData);
+            console.log('Clicked object userData type:', clickedObject.userData?.type);
+            console.log('Clicked object userData planetName:', clickedObject.userData?.planetName);
+            console.log('Clicked object parent:', clickedObject.parent);
+            if (clickedObject.parent) {
+                console.log('Parent userData:', clickedObject.parent.userData);
+                console.log('Parent userData type:', clickedObject.parent.userData?.type);
+                console.log('Parent userData name:', clickedObject.parent.userData?.name);
+            }
             
-            // Find which planet/sun was clicked using simple detection
+            // Find which planet/sun was clicked by traversing up the scene graph
             let projectKey = null;
             
-            // Check if it's the sun
-            if (clickedObject === this.sun || clickedObject.parent === this.sun) {
-                projectKey = 'sun';
-            } else {
-                // Check planets
-                for (const planet of this.planets) {
-                    if (clickedObject === planet.mesh || clickedObject.parent === planet.mesh) {
-                        projectKey = planet.name;
-                        break;
+            // Function to traverse up and find planet or sun
+            function findPlanetInHierarchy(object) {
+                let current = object;
+                while (current) {
+                    // Check if it's a hitbox
+                    if (current.userData && current.userData.type === 'hitbox') {
+                        console.log('Found hitbox for:', current.userData.planetName);
+                        return current.userData.planetName;
                     }
+                    
+                    // Check if it's the sun
+                    if (current === self.sun) {
+                        console.log('Found sun');
+                        return 'sun';
+                    }
+                    
+                    // Check if this object or any parent belongs to a planet
+                    for (const planet of self.planets) {
+                        if (current === planet.mesh || current === planet.group) {
+                            console.log('Found planet via traversal:', planet.name);
+                            return planet.name;
+                        }
+                        // Also check if current is a child of the planet mesh
+                        if (planet.mesh && planet.mesh.children.includes(current)) {
+                            console.log('Found planet via child relationship:', planet.name);
+                            return planet.name;
+                        }
+                        // Check if current is anywhere in the planet's group hierarchy
+                        if (isDescendantOf(current, planet.group)) {
+                            console.log('Found planet via group hierarchy:', planet.name);
+                            return planet.name;
+                        }
+                    }
+                    
+                    current = current.parent;
                 }
+                return null;
             }
+            
+            // Helper function to check if an object is a descendant of another
+            function isDescendantOf(child, parent) {
+                let current = child;
+                while (current) {
+                    if (current === parent) return true;
+                    current = current.parent;
+                }
+                return false;
+            }
+            
+            projectKey = findPlanetInHierarchy(clickedObject);
+            console.log('Final projectKey determined:', projectKey);
 
             console.log('Detected project:', projectKey);
             if (projectKey && this.projectData[projectKey]) {
-                this.showProjectModal(projectKey);
+                console.log('Attempting to zoom to:', projectKey);
+                console.log('Camera state before zoom:', this.cameraState);
+                this.zoomToPlanet(projectKey);
+            } else {
+                console.log('No project data found for:', projectKey);
             }
         }
     }
@@ -649,6 +783,12 @@ class SpacePortfolio {
         
         // Show modal
         document.getElementById('project-modal').style.display = 'flex';
+        
+        // Set up back button
+        const backBtn = document.getElementById('back-to-overview');
+        if (backBtn) {
+            backBtn.onclick = () => this.zoomToOverview();
+        }
     }
 
     animate() {
@@ -673,7 +813,8 @@ class SpacePortfolio {
             }
         });
         
-        // Camera transitions removed - simplified to basic controls
+        // Handle smooth camera transitions for planet zoom
+        this.updateCameraTransitions(deltaTime);
         
         // Moon removed
         
@@ -685,7 +826,147 @@ class SpacePortfolio {
         this.renderer.render(this.scene, this.camera);
     }
     
-    // Camera transitions removed - using simple drag/zoom controls only
+    updateCameraTransitions(deltaTime) {
+        if (!this.cameraTransition.active && this.cameraState !== 'planet') return;
+        
+        // If we're in planet mode, continuously follow the planet
+        if (this.cameraState === 'planet' && this.selectedPlanet) {
+            this.updateCameraFollowPlanet();
+        }
+        
+        // Handle active transitions
+        if (this.cameraTransition.active) {
+            // Update transition progress
+            this.cameraTransition.progress += deltaTime / this.cameraTransition.duration;
+            this.cameraTransition.progress = Math.min(1, this.cameraTransition.progress);
+            
+            // Smooth easing function
+            const t = this.cameraTransition.progress;
+            const easeInOut = t * t * (3 - 2 * t);
+            
+            // Interpolate camera position
+            this.camera.position.lerpVectors(
+                this.cameraTransition.startPosition,
+                this.cameraTransition.targetPosition,
+                easeInOut
+            );
+            
+            // Interpolate look-at target
+            const currentLookAt = new THREE.Vector3().lerpVectors(
+                this.cameraTransition.startLookAt,
+                this.cameraTransition.targetLookAt,
+                easeInOut
+            );
+            this.camera.lookAt(currentLookAt);
+            
+            // End transition
+            if (this.cameraTransition.progress >= 1) {
+                this.cameraTransition.active = false;
+                console.log('Camera transition completed');
+            }
+        }
+    }
+    
+    updateCameraFollowPlanet() {
+        if (!this.selectedPlanet) return;
+        
+        // Get the current world position of the selected planet
+        const currentPlanetPosition = new THREE.Vector3();
+        
+        if (this.selectedPlanet.key === 'sun') {
+            currentPlanetPosition.copy(this.sun.position);
+        } else {
+            const planet = this.planets.find(p => p.name === this.selectedPlanet.key);
+            if (planet && planet.mesh) {
+                if (planet.group) {
+                    planet.mesh.getWorldPosition(currentPlanetPosition);
+                } else {
+                    currentPlanetPosition.copy(planet.mesh.position);
+                }
+            }
+        }
+        
+        // Update camera to follow the planet smoothly
+        const offset = new THREE.Vector3(5, 3, 5);
+        const targetCameraPosition = currentPlanetPosition.clone().add(offset);
+        
+        // Smooth camera following
+        this.camera.position.lerp(targetCameraPosition, 0.05);
+        this.camera.lookAt(currentPlanetPosition);
+        
+        // Update selected planet position for reference
+        this.selectedPlanet.position = currentPlanetPosition.clone();
+    }
+
+    zoomToPlanet(projectKey) {
+        if (this.cameraState === 'planet') {
+            console.log('Already in planet mode, cancelling zoom to:', projectKey);
+            return; // Already zoomed
+        }
+        
+        console.log('Starting zoom to planet:', projectKey);
+        
+        // Find the target object
+        let targetObject = null;
+        let targetPosition = new THREE.Vector3();
+        
+        if (projectKey === 'sun') {
+            targetObject = this.sun;
+            targetPosition.copy(this.sun.position);
+        } else {
+            const planet = this.planets.find(p => p.name === projectKey);
+            if (!planet) return;
+            targetObject = planet.mesh;
+            
+            // Get world position for orbiting planets
+            if (planet.group) {
+                planet.mesh.getWorldPosition(targetPosition);
+            } else {
+                targetPosition.copy(planet.mesh.position);
+            }
+        }
+        
+        // Set up camera transition
+        this.cameraTransition.startPosition.copy(this.camera.position);
+        this.cameraTransition.startLookAt.copy(new THREE.Vector3(0, 0, 0)); // Current center
+        
+        // Calculate target camera position (offset from object)
+        const offset = new THREE.Vector3(5, 3, 5);
+        this.cameraTransition.targetPosition.copy(targetPosition).add(offset);
+        this.cameraTransition.targetLookAt.copy(targetPosition);
+        
+        // Start transition
+        this.cameraTransition.active = true;
+        this.cameraTransition.progress = 0;
+        this.cameraState = 'planet';
+        this.selectedPlanet = { key: projectKey, object: targetObject, position: targetPosition };
+        
+        // Show project modal
+        this.showProjectModal(projectKey);
+    }
+    
+    zoomToOverview() {
+        if (this.cameraState === 'overview') return; // Already in overview
+        
+        console.log('Returning to overview');
+        
+        // Set up transition back to overview
+        this.cameraTransition.startPosition.copy(this.camera.position);
+        this.cameraTransition.startLookAt.copy(this.selectedPlanet ? this.selectedPlanet.position : new THREE.Vector3(0, 0, 0));
+        
+        // Target is the original overview position
+        this.cameraTransition.targetPosition.set(0, 25, 60);
+        this.cameraTransition.targetLookAt.set(0, 0, 0);
+        
+        // Start transition
+        this.cameraTransition.active = true;
+        this.cameraTransition.progress = 0;
+        this.cameraState = 'overview';
+        this.selectedPlanet = null;
+        
+        // Hide modal
+        document.getElementById('project-modal').style.display = 'none';
+    }
 
     // Camera controls for dragging to rotate around solar system
     addCameraControls() {
@@ -718,8 +999,8 @@ class SpacePortfolio {
         window.addEventListener('mousemove', (e) => {
             if (isMouseDown) {
                 console.log('Mouse drag detected, camera state:', self.cameraState);
-                // TEMPORARILY REMOVE camera state check to fix drag
-                if (true) { // was: if (self.cameraState === 'overview') {
+                // Allow dragging in overview mode and when not transitioning
+                if (self.cameraState === 'overview' && !self.cameraTransition.active) {
                     const deltaX = e.clientX - mouseX;
                     const deltaY = e.clientY - mouseY;
                     
@@ -752,8 +1033,8 @@ class SpacePortfolio {
         window.addEventListener('wheel', (e) => {
             console.log('Mouse wheel detected, camera state:', self.cameraState);
             console.log('Wheel deltaY:', e.deltaY);
-            // TEMPORARILY REMOVE camera state check to fix wheel
-            if (true) { // was: if (self.cameraState === 'overview') {
+            // Allow zooming in overview mode and when not transitioning
+            if (self.cameraState === 'overview' && !self.cameraTransition.active) {
                 e.preventDefault();
                 const distance = self.camera.position.length();
                 const newDistance = distance + e.deltaY * 0.02;

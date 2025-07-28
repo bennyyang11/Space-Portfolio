@@ -229,6 +229,27 @@ body {
     transform: translateY(-2px);
 }
 
+/* Back button styling */
+.back-btn {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(135, 206, 235, 0.2);
+    border: 1px solid rgba(135, 206, 235, 0.5);
+    color: #87CEEB;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.back-btn:hover {
+    background: rgba(135, 206, 235, 0.3);
+    border-color: #87CEEB;
+    transform: translateX(-2px);
+}
+
 /* Instructions */
 #instructions {
     position: absolute;

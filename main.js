@@ -203,36 +203,41 @@ class SpacePortfolio {
         const canvas = document.getElementById('three-canvas');
         this.renderer = new THREE.WebGLRenderer({ 
             canvas: canvas, 
-            antialias: true 
+            antialias: true,
+            alpha: false,
+            powerPreference: "high-performance"
         });
         
-        // Force canvas to full viewport size
+        // Get accurate viewport size
         const width = window.innerWidth;
         const height = window.innerHeight;
         
+        // Setup renderer
         this.renderer.setSize(width, height);
-        this.renderer.setPixelRatio(window.devicePixelRatio);
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         this.renderer.shadowMap.enabled = true;
         this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         
-        // AGGRESSIVELY force canvas to full size
+        // Make canvas responsive using viewport units
         canvas.style.cssText = `
-            width: ${width}px !important;
-            height: ${height}px !important;
+            width: 100vw !important;
+            height: 100vh !important;
             position: fixed !important;
             top: 0 !important;
             left: 0 !important;
             z-index: 1 !important;
             display: block !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: none !important;
+            outline: none !important;
         `;
         
-        // Also force the attributes
-        canvas.width = width;
-        canvas.height = height;
+        // Set canvas buffer size
+        canvas.width = width * window.devicePixelRatio;
+        canvas.height = height * window.devicePixelRatio;
         
-        console.log('Renderer created - Canvas size:', width, 'x', height);
-        console.log('Canvas element dimensions:', canvas.offsetWidth, 'x', canvas.offsetHeight);
-        console.log('Canvas actual width/height attributes:', canvas.width, 'x', canvas.height);
+        console.log('Renderer created - Viewport:', width, 'x', height, 'DPR:', window.devicePixelRatio);
     }
 
     createLights() {
@@ -562,31 +567,44 @@ class SpacePortfolio {
         window.addEventListener('click', this.onMouseClick.bind(this));
         window.addEventListener('mousemove', this.onMouseMove.bind(this));
         
-        // Window resize
+        // Window and screen resize handling
         window.addEventListener('resize', this.onWindowResize.bind(this));
         
-        // Force a resize check after setup
+        // Handle orientation change (mobile devices)
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                this.onWindowResize();
+            }, 100);
+        });
+        
+        // Handle screen/display changes (moving between monitors)
+        if (screen && screen.addEventListener) {
+            screen.addEventListener('change', this.onWindowResize.bind(this));
+        }
+        
+        // Handle visibility changes (tab switching, window focus)
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                setTimeout(() => {
+                    this.onWindowResize();
+                }, 50);
+            }
+        });
+        
+        // Force initial resize and periodic checks
         setTimeout(() => {
-            console.log('Triggering manual resize check...');
+            console.log('Triggering initial resize check...');
             this.onWindowResize();
-            
-                    // AGGRESSIVELY force canvas size again  
-        const canvas = document.getElementById('three-canvas');
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-        canvas.style.cssText = `
-            width: ${width}px !important;
-            height: ${height}px !important;
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            z-index: 1 !important;
-            display: block !important;
-        `;
-        canvas.width = width;
-        canvas.height = height;
-        console.log('AGGRESSIVELY forced canvas resize to:', width, 'x', height);
         }, 100);
+        
+        // Periodic resize check for display changes
+        setInterval(() => {
+            const canvas = document.getElementById('three-canvas');
+            if (canvas && (canvas.offsetWidth !== window.innerWidth || canvas.offsetHeight !== window.innerHeight)) {
+                console.log('Display size mismatch detected, triggering resize...');
+                this.onWindowResize();
+            }
+        }, 1000);
         
         // Keyboard controls
         window.addEventListener('keydown', this.onKeyDown.bind(this));
@@ -962,30 +980,50 @@ class SpacePortfolio {
     }
 
     onWindowResize() {
+        // Get accurate viewport dimensions
         const width = window.innerWidth;
         const height = window.innerHeight;
         
+        console.log('Resizing to:', width, 'x', height);
+        
+        // Update camera
         this.camera.aspect = width / height;
         this.camera.updateProjectionMatrix();
+        
+        // Update renderer
         this.renderer.setSize(width, height);
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Cap pixel ratio for performance
         
-        // AGGRESSIVELY force canvas to full size
+        // Force canvas to match viewport exactly
         const canvas = document.getElementById('three-canvas');
-        canvas.style.cssText = `
-            width: ${width}px !important;
-            height: ${height}px !important;
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            z-index: 1 !important;
-            display: block !important;
-        `;
-        canvas.width = width;
-        canvas.height = height;
+        if (canvas) {
+            // Remove any existing styles first
+            canvas.style.cssText = '';
+            
+            // Apply new responsive styles
+            canvas.style.cssText = `
+                width: 100vw !important;
+                height: 100vh !important;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                z-index: 1 !important;
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                outline: none !important;
+            `;
+            
+            // Set canvas buffer size to match display size
+            canvas.width = width * window.devicePixelRatio;
+            canvas.height = height * window.devicePixelRatio;
+            
+            // Force immediate redraw
+            this.renderer.setViewport(0, 0, width, height);
+        }
         
-        console.log('Window resized to:', width, 'x', height);
-        console.log('Canvas element dimensions after resize:', canvas.offsetWidth, 'x', canvas.offsetHeight);
-        console.log('Canvas actual width/height attributes:', canvas.width, 'x', canvas.height);
+        console.log('Resize complete - Canvas:', width, 'x', height, 'DPR:', window.devicePixelRatio);
     }
 
     forceHideLoadingScreen() {

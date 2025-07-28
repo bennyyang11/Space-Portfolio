@@ -5,12 +5,27 @@
     box-sizing: border-box;
 }
 
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background: #000;
     color: #fff;
     overflow: hidden;
     cursor: default;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 #app {
@@ -19,15 +34,23 @@ body {
     height: 100vh;
 }
 
-/* Three.js canvas */
+/* Three.js canvas - Force responsive behavior */
 #three-canvas {
-    display: block;
+    display: block !important;
     width: 100vw !important;
     height: 100vh !important;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    outline: none !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    min-width: 100vw !important;
+    min-height: 100vh !important;
 }
 
 /* UI Overlay */

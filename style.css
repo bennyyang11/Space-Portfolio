@@ -56,20 +56,68 @@ body {
 .header {
     position: absolute;
     top: 20px;
-    left: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 25px;
+    border-radius: 10px;
+    border: 1px solid rgba(135, 206, 235, 0.3);
+    backdrop-filter: blur(10px);
     z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 400px;
+    position: relative;
 }
 
-#header h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
-    background-size: 200% 200%;
-    animation: gradient 3s ease infinite;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.header h1 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.6),
+        0 0 20px rgba(135, 206, 235, 0.4);
+    letter-spacing: 2px;
 }
+
+/* Solar system back button */
+.solar-back-button {
+    position: fixed;
+    left: 20px;
+    top: 80px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    border: 2px solid #87CEEB;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 
+        0 0 15px rgba(135, 206, 235, 0.5),
+        0 0 25px rgba(102, 126, 234, 0.3);
+    text-shadow: 
+        0 0 8px rgba(255, 255, 255, 0.6),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+    animation: buttonFloat 4s ease-in-out infinite;
+    white-space: nowrap;
+    z-index: 300;
+}
+
+.solar-back-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 0 25px rgba(135, 206, 235, 0.8),
+        0 0 35px rgba(102, 126, 234, 0.6);
+    border-color: #ffffff;
+}
+
+
 
 @keyframes gradient {
     0% { background-position: 0% 50%; }
@@ -77,31 +125,7 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-#navigation {
-    display: flex;
-    gap: 10px;
-}
 
-.nav-btn {
-    padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #fff;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-}
-
-.nav-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
-
-.nav-btn.active {
-    background: rgba(69, 183, 209, 0.3);
-    border-color: #45b7d1;
-}
 
 /* Loading Screen */
 #loading-screen {
@@ -115,6 +139,332 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+}
+
+/* Welcome Screen */
+.welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.welcome-screen.hidden, .about-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* About Screen */
+.about-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    overflow-y: auto;
+    padding: 2rem 0;
+}
+
+.about-screen.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.about-content {
+    text-align: center;
+    max-width: 1200px;
+    padding: 2rem;
+    margin: auto;
+    /* Floating in space effect */
+}
+
+/* Back button for about screen */
+.back-button {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    border: 2px solid #87CEEB;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 
+        0 0 15px rgba(135, 206, 235, 0.5),
+        0 0 25px rgba(102, 126, 234, 0.3);
+    text-shadow: 
+        0 0 8px rgba(255, 255, 255, 0.6),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+    animation: buttonFloat 4s ease-in-out infinite;
+    z-index: 1001;
+}
+
+.back-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 0 25px rgba(135, 206, 235, 0.8),
+        0 0 35px rgba(102, 126, 234, 0.6);
+    border-color: #ffffff;
+}
+
+.about-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    margin-bottom: 3rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    /* Bubble letter effect */
+    -webkit-text-stroke: 3px #87CEEB;
+    text-stroke: 3px #87CEEB;
+    text-shadow: 
+        0 0 20px rgba(135, 206, 235, 0.8),
+        0 0 40px rgba(135, 206, 235, 0.6),
+        0 0 60px rgba(135, 206, 235, 0.4),
+        5px 5px 0px #4682B4,
+        10px 10px 0px #2F4F4F,
+        15px 15px 0px #1C1C1C,
+        20px 20px 30px rgba(0, 0, 0, 0.8);
+    transform: perspective(500px) rotateX(15deg);
+    animation: float 4s ease-in-out infinite, glow 3s ease-in-out infinite alternate;
+}
+
+.professional-intro {
+    margin-bottom: 3rem;
+    text-align: left;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.intro-text {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 1.8rem;
+    color: #ffffff;
+    text-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(135, 206, 235, 0.4);
+    animation: textFloat 5s ease-in-out infinite;
+}
+
+.intro-text strong {
+    font-size: 2.2rem;
+    font-weight: 800;
+    display: block;
+    margin-bottom: 0.5rem;
+    -webkit-text-stroke: 1px #87CEEB;
+    text-stroke: 1px #87CEEB;
+}
+
+.title-line {
+    font-size: 1.4rem;
+    color: #87CEEB;
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+.about-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    text-shadow: 
+        0 0 8px rgba(255, 255, 255, 0.5),
+        0 0 15px rgba(135, 206, 235, 0.3);
+    animation: textFloat 6s ease-in-out infinite;
+    animation-delay: 0.3s;
+}
+
+.expertise-areas {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border-left: 3px solid #87CEEB;
+    background: rgba(135, 206, 235, 0.05);
+    border-radius: 0 10px 10px 0;
+}
+
+.expertise-areas h3 {
+    font-size: 1.5rem;
+    color: #87CEEB;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 
+        0 0 10px rgba(135, 206, 235, 0.8),
+        0 0 20px rgba(135, 206, 235, 0.4);
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skills-list li {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+    text-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.4);
+}
+
+.skills-list li::before {
+    content: "▶";
+    color: #87CEEB;
+    position: absolute;
+    left: 0;
+    font-size: 0.8rem;
+    text-shadow: 0 0 10px rgba(135, 206, 235, 0.8);
+}
+
+.personal-note {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 2rem;
+    font-style: italic;
+    text-align: center;
+    text-shadow: 
+        0 0 8px rgba(255, 255, 255, 0.4),
+        0 0 15px rgba(135, 206, 235, 0.2);
+    animation: textFloat 7s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+.about-action {
+    margin: 3rem auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.welcome-content {
+    text-align: center;
+    max-width: 1000px;
+    padding: 2rem;
+    /* Removed background - floating in space effect */
+}
+
+.welcome-title {
+    font-size: 5rem;
+    font-weight: 900;
+    margin-bottom: 3rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    /* Bubble letter effect */
+    -webkit-text-stroke: 3px #87CEEB;
+    text-stroke: 3px #87CEEB;
+    /* Multiple shadows for 3D depth */
+    text-shadow: 
+        0 0 20px rgba(135, 206, 235, 0.8),
+        0 0 40px rgba(135, 206, 235, 0.6),
+        0 0 60px rgba(135, 206, 235, 0.4),
+        5px 5px 0px #4682B4,
+        10px 10px 0px #2F4F4F,
+        15px 15px 0px #1C1C1C,
+        20px 20px 30px rgba(0, 0, 0, 0.8);
+    /* 3D transform for floating effect */
+    transform: perspective(500px) rotateX(15deg);
+    animation: float 4s ease-in-out infinite, glow 3s ease-in-out infinite alternate;
+}
+
+
+
+.welcome-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.enter-btn {
+    background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
+    background-size: 200% 200%;
+    color: white;
+    border: 3px solid #87CEEB;
+    padding: 1.5rem 3rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /* Floating button effect */
+    box-shadow: 
+        0 0 20px rgba(135, 206, 235, 0.6),
+        0 0 40px rgba(102, 126, 234, 0.4),
+        0 15px 35px rgba(0, 0, 0, 0.6);
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    animation: buttonFloat 3s ease-in-out infinite, gradient 4s ease infinite;
+    animation-delay: 1.5s;
+}
+
+.enter-btn:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 
+        0 0 30px rgba(135, 206, 235, 0.9),
+        0 0 50px rgba(102, 126, 234, 0.7),
+        0 25px 50px rgba(0, 0, 0, 0.8);
+    border-color: #ffffff;
+    text-shadow: 
+        0 0 15px rgba(255, 255, 255, 1),
+        3px 3px 6px rgba(0, 0, 0, 0.9);
+}
+
+.enter-hint {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    margin: 0;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-shadow: 
+        0 0 8px rgba(255, 255, 255, 0.5),
+        0 0 15px rgba(135, 206, 235, 0.3);
+    animation: textFloat 4s ease-in-out infinite;
+    animation-delay: 2s;
 }
 
 .loading-content {
@@ -238,10 +588,6 @@ body {
 
 /* Responsive design */
 @media (max-width: 768px) {
-    #header h1 {
-        font-size: 1.5rem;
-    }
-    
     .modal-content {
         padding: 1.5rem;
         margin: 20px;
@@ -649,10 +995,63 @@ body {
     100% { background-position: 0% 50%; }
 }
 
+/* Floating animations for space effect */
+@keyframes float {
+    0%, 100% { 
+        transform: perspective(500px) rotateX(15deg) translateY(0px) translateZ(0px);
+    }
+    50% { 
+        transform: perspective(500px) rotateX(15deg) translateY(-20px) translateZ(10px);
+    }
+}
+
+@keyframes glow {
+    0% { 
+        text-shadow: 
+            0 0 20px rgba(135, 206, 235, 0.8),
+            0 0 40px rgba(135, 206, 235, 0.6),
+            0 0 60px rgba(135, 206, 235, 0.4),
+            5px 5px 0px #4682B4,
+            10px 10px 0px #2F4F4F,
+            15px 15px 0px #1C1C1C,
+            20px 20px 30px rgba(0, 0, 0, 0.8);
+    }
+    100% { 
+        text-shadow: 
+            0 0 30px rgba(135, 206, 235, 1),
+            0 0 50px rgba(135, 206, 235, 0.8),
+            0 0 80px rgba(135, 206, 235, 0.6),
+            5px 5px 0px #4682B4,
+            10px 10px 0px #2F4F4F,
+            15px 15px 0px #1C1C1C,
+            20px 20px 40px rgba(0, 0, 0, 0.9);
+    }
+}
+
+@keyframes textFloat {
+    0%, 100% { 
+        transform: translateY(0px);
+        opacity: 0.9;
+    }
+    50% { 
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+}
+
+@keyframes buttonFloat {
+    0%, 100% { 
+        transform: translateY(0px) scale(1);
+    }
+    50% { 
+        transform: translateY(-8px) scale(1.02);
+    }
+}
+
 /* Camera Controls Instructions */
 .camera-instructions {
     position: fixed;
-    top: 20px;
+    top: 120px;
     right: 20px;
     z-index: 200;
     pointer-events: auto;
@@ -713,7 +1112,7 @@ body {
     }
     
     .camera-instructions {
-        top: 15px;
+        top: 100px;
         right: 15px;
     }
     
@@ -743,7 +1142,7 @@ body {
     }
     
     .camera-instructions {
-        top: 10px;
+        top: 90px;
         right: 10px;
     }
     
@@ -769,5 +1168,110 @@ body {
     .control-item {
         margin-bottom: 0.5rem;
         gap: 0.6rem;
+    }
+    
+    /* Welcome & About screen mobile */
+    .welcome-content, .about-content {
+        padding: 1.5rem 1rem;
+        max-width: 95%;
+    }
+    
+    .welcome-title, .about-title {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        letter-spacing: 4px;
+        -webkit-text-stroke: 2px #87CEEB;
+    }
+    
+    .intro-text {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .intro-text strong {
+        font-size: 1.8rem;
+    }
+    
+    .title-line {
+        font-size: 1.1rem;
+    }
+    
+    .about-description {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.2rem;
+    }
+    
+    .expertise-areas {
+        margin: 1.5rem 0;
+        padding: 1rem;
+    }
+    
+    .expertise-areas h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .skills-list li {
+        font-size: 0.95rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .personal-note {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-top: 1.5rem;
+    }
+    
+    .enter-btn {
+        padding: 1.2rem 2.2rem;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+    
+    .enter-hint {
+        font-size: 0.9rem;
+    }
+    
+    .back-button {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .header {
+        min-width: 300px;
+        padding: 12px 20px;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .solar-back-button {
+        left: 15px;
+        top: 70px;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .solar-back-button {
+        left: 10px;
+        top: 60px;
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .header {
+        min-width: 280px;
+        padding: 10px 15px;
+        top: 10px;
+    }
+    
+    .header h1 {
+        font-size: 1.3rem;
+        letter-spacing: 0.5px;
     }
 } 

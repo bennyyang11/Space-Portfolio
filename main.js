@@ -15,8 +15,8 @@ class SpacePortfolio {
         this.clock = new THREE.Clock();
         this.loader = new GLTFLoader();
         
-        // Camera state management for planet zoom
-        this.cameraState = 'overview'; // 'overview' or 'planet'
+        // Camera state management for planet zoom and welcome screen
+        this.cameraState = 'welcome'; // 'welcome', 'overview' or 'planet'
         this.selectedPlanet = null;
         this.pendingProjectKey = null; // Stores project key until zoom completes
         this.cameraTransition = {
@@ -194,7 +194,8 @@ class SpacePortfolio {
             0.1,
             1000
         );
-        this.camera.position.set(0, 25, 60); // Zoomed out more to see the expanded solar system
+        // Start camera very far away for welcome screen
+        this.camera.position.set(0, 80, 200); // Much further out for welcome view
         this.camera.lookAt(0, 0, 0);
     }
 
@@ -594,6 +595,9 @@ class SpacePortfolio {
     }
 
     setupUI() {
+        // Set up welcome screen functionality
+        this.setupWelcomeScreen();
+        
         // Set up overlay close button
         const closeBtn = document.getElementById('close-overlay');
         if (closeBtn) {
@@ -612,9 +616,169 @@ class SpacePortfolio {
         console.log('Overlay UI setup complete');
     }
 
+    setupWelcomeScreen() {
+        // Hide camera controls and instructions initially
+        this.toggleUIElements(false);
+        
+        // Continue button to go from Welcome to About
+        const continueBtn = document.getElementById('continue-btn');
+        if (continueBtn) {
+            continueBtn.addEventListener('click', () => {
+                this.showAboutScreen();
+            });
+        }
+
+        // Enter Portfolio button to go from About to Solar System
+        const enterPortfolioBtn = document.getElementById('enter-portfolio-btn');
+        if (enterPortfolioBtn) {
+            enterPortfolioBtn.addEventListener('click', () => {
+                this.enterPortfolio();
+            });
+        }
+
+        // Back button to go from About back to Welcome
+        const backBtn = document.getElementById('back-button');
+        if (backBtn) {
+            backBtn.addEventListener('click', () => {
+                this.goBackToWelcome();
+            });
+        }
+
+        // Solar system back button to go from Solar System back to About
+        const solarBackBtn = document.getElementById('solar-back-button');
+        if (solarBackBtn) {
+            solarBackBtn.addEventListener('click', () => {
+                this.goBackToAbout();
+            });
+        }
+    }
+
+    showAboutScreen() {
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const aboutScreen = document.getElementById('about-screen');
+        
+        // Hide welcome screen
+        welcomeScreen.classList.add('hidden');
+        
+        // Show about screen after a short delay
+        setTimeout(() => {
+            aboutScreen.classList.add('show');
+        }, 300);
+    }
+
+    goBackToWelcome() {
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const aboutScreen = document.getElementById('about-screen');
+        
+        // Hide about screen
+        aboutScreen.classList.remove('show');
+        aboutScreen.classList.add('hidden');
+        
+        // Show welcome screen after a short delay
+        setTimeout(() => {
+            welcomeScreen.classList.remove('hidden');
+        }, 300);
+    }
+
+    goBackToAbout() {
+        console.log('Going back to About page...');
+        
+        // Hide UI elements
+        this.toggleUIElements(false);
+        
+        // Hide back button when returning to about page
+        this.hideBackButton();
+        
+        // Show about screen
+        const aboutScreen = document.getElementById('about-screen');
+        if (aboutScreen) {
+            aboutScreen.classList.remove('hidden');
+            aboutScreen.classList.add('show');
+        }
+        
+        // Change camera state back to welcome (which will hide solar system interactions)
+        this.cameraState = 'welcome';
+        
+        // Zoom camera back out to welcome view
+        this.cameraTransition.active = true;
+        this.cameraTransition.progress = 0;
+        this.cameraTransition.duration = 2.0;
+        
+        this.cameraTransition.startPosition.copy(this.camera.position);
+        this.cameraTransition.targetPosition.set(0, 80, 200);
+        
+        this.cameraTransition.startLookAt.copy(this.controls.target);
+        this.cameraTransition.targetLookAt.set(0, 0, 0);
+    }
+
+    toggleUIElements(show) {
+        const elementsToToggle = [
+            '.camera-instructions',
+            '.instructions',
+            '.header'
+        ];
+        
+        elementsToToggle.forEach(selector => {
+            const element = document.querySelector(selector);
+            if (element) {
+                element.style.display = show ? 'block' : 'none';
+            }
+        });
+    }
+
+    enterPortfolio() {
+        console.log('Entering portfolio...');
+        
+        // Hide welcome and about screens
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const aboutScreen = document.getElementById('about-screen');
+        
+        if (welcomeScreen) {
+            welcomeScreen.classList.add('hidden');
+        }
+        if (aboutScreen) {
+            aboutScreen.classList.remove('show');
+            aboutScreen.classList.add('hidden');
+        }
+        
+        // Show UI elements
+        this.toggleUIElements(true);
+        
+        // Show back button in solar system view
+        this.showBackButton();
+        
+        // Change camera state and zoom to solar system
+        this.cameraState = 'overview';
+        this.zoomToSolarSystem();
+    }
+
+    zoomToSolarSystem() {
+        // Animate camera to solar system view
+        this.cameraTransition.active = true;
+        this.cameraTransition.progress = 0;
+        this.cameraTransition.duration = 3.0;
+        
+        // Current position (welcome view)
+        this.cameraTransition.startPosition.copy(this.camera.position);
+        this.cameraTransition.startLookAt.copy(this.camera.position).add(
+            new THREE.Vector3(0, 0, -1).applyQuaternion(this.camera.quaternion)
+        );
+        
+        // Target position (solar system view)
+        this.cameraTransition.targetPosition.set(0, 25, 60);
+        this.cameraTransition.targetLookAt.set(0, 0, 0);
+        
+        console.log('Zooming to solar system view...');
+    }
+
     onMouseClick(event) {
         const self = this; // Store reference for nested functions
         console.log('Mouse click detected!', event.clientX, event.clientY);
+        
+        // Don't handle planet clicks during welcome screen
+        if (this.cameraState === 'welcome') {
+            return;
+        }
         
         // Calculate mouse position in normalized device coordinates
         this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -1172,6 +1336,9 @@ class SpacePortfolio {
         
         // Store project key for when transition completes
         this.pendingProjectKey = projectKey;
+        
+        // Hide back button during project view
+        this.hideBackButton();
     }
     
     zoomToOverview() {
@@ -1198,6 +1365,23 @@ class SpacePortfolio {
         const overlay = document.getElementById('project-overlay');
         if (overlay) {
             overlay.classList.remove('show');
+        }
+        
+        // Show back button when returning to overview
+        this.showBackButton();
+    }
+
+    hideBackButton() {
+        const backButton = document.getElementById('solar-back-button');
+        if (backButton) {
+            backButton.style.display = 'none';
+        }
+    }
+
+    showBackButton() {
+        const backButton = document.getElementById('solar-back-button');
+        if (backButton) {
+            backButton.style.display = 'block';
         }
     }
 

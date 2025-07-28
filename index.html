@@ -14,10 +14,8 @@
     <div class="ui-overlay">
         <!-- Header -->
         <header class="header">
-            <h1>Ben Yang - Portfolio</h1>
-            <nav class="nav">
-                <button class="nav-btn" onclick="portfolio.resetCamera()">Reset View</button>
-            </nav>
+            <button id="solar-back-button" class="solar-back-button">← Back</button>
+            <h1>Benny Yang's Portfolio</h1>
         </header>
         
         <!-- Camera Controls Instructions -->
@@ -40,6 +38,65 @@
             <div class="loading-content">
                 <div class="loading-spinner"></div>
                 <p>Loading Solar System...</p>
+            </div>
+        </div>
+        
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="welcome-screen">
+            <div class="welcome-content">
+                <h1 class="welcome-title">Welcome to My Portfolio</h1>
+                <div class="welcome-action">
+                    <button id="continue-btn" class="enter-btn">
+                        ✨ Continue
+                    </button>
+                    <p class="enter-hint">Discover my journey</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Me Screen -->
+        <div id="about-screen" class="about-screen">
+            <button id="back-button" class="back-button">← Back</button>
+            <div class="about-content">
+                <h1 class="about-title">About Me</h1>
+                <div class="professional-intro">
+                    <p class="intro-text">
+                        <strong>Benjamin Yang</strong><br>
+                        <span class="title-line">Software Engineer & Technology Innovator</span>
+                    </p>
+                    <div class="credentials">
+                        <p class="about-description">
+                            I am a recent graduate from the University of Colorado Boulder with a Bachelor of Arts & Science 
+                            in Computer Science and a minor in Computer Engineering. As a dedicated software engineer, 
+                            I bring expertise in full-stack development, artificial intelligence, and modern system architecture.
+                        </p>
+                        <p class="about-description">
+                            My technical portfolio demonstrates proficiency across diverse domains, from interactive gaming 
+                            platforms to enterprise-level APIs. I consistently focus on performance optimization, 
+                            innovative problem-solving, and delivering scalable solutions that meet real-world challenges.
+                        </p>
+                        <div class="expertise-areas">
+                            <h3>Core Competencies</h3>
+                            <ul class="skills-list">
+                                <li>Full-Stack Web Development (React, Node.js, TypeScript)</li>
+                                <li>Machine Learning & AI Implementation</li>
+                                <li>Database Design & System Architecture</li>
+                                <li>Hardware Design & Digital Logic (RISC-V, Verilog)</li>
+                                <li>Cloud Technologies & Performance Optimization</li>
+                            </ul>
+                        </div>
+                        <p class="personal-note">
+                            Beyond technical pursuits, I maintain an active lifestyle through sports and fitness, 
+                            believing that personal well-being enhances professional performance and creative thinking.
+                        </p>
+                    </div>
+                </div>
+                <div class="about-action">
+                    <button id="enter-portfolio-btn" class="enter-btn">
+                        🚀 Enter Portfolio
+                    </button>
+                    <p class="enter-hint">Explore my interactive solar system of projects</p>
+                </div>
             </div>
         </div>
         

@@ -18,6 +18,7 @@ class SpacePortfolio {
         // Camera state management for planet zoom
         this.cameraState = 'overview'; // 'overview' or 'planet'
         this.selectedPlanet = null;
+        this.pendingProjectKey = null; // Stores project key until zoom completes
         this.cameraTransition = {
             active: false,
             progress: 0,
@@ -33,56 +34,137 @@ class SpacePortfolio {
             sun: {
                 title: "Ben Yang - Full Stack Developer",
                 description: "Welcome to my interactive portfolio! I'm a passionate full-stack developer with expertise in modern web technologies, 3D graphics, and innovative user experiences. This solar system represents my journey through different projects and technologies.",
+                image: "assets/images/projects/portfolio.jpg",
+                features: [
+                    "Interactive 3D Solar System Portfolio",
+                    "Responsive Web Applications",
+                    "Full-Stack Development",
+                    "Modern UI/UX Design",
+                    "Cloud Infrastructure & DevOps"
+                ],
                 tech: ["JavaScript", "React", "Node.js", "Three.js", "Python", "AWS"],
-                link: "https://github.com/bennyyang11"
+                link: "https://github.com/bennyyang11",
+                demo: "https://bennyyang.dev"
             },
             mercury: {
                 title: "QuickChat - Real-time Messaging App",
                 description: "A lightning-fast real-time chat application built with WebSocket technology. Features include instant messaging, file sharing, emoji reactions, and typing indicators. Designed for speed and efficiency just like Mercury!",
+                image: "assets/images/projects/quickchat.jpg",
+                features: [
+                    "Real-time messaging with Socket.io",
+                    "File sharing and image uploads",
+                    "Emoji reactions and typing indicators",
+                    "Group chats and private messaging",
+                    "Message encryption and user authentication"
+                ],
                 tech: ["React", "Node.js", "Socket.io", "MongoDB", "Redis"],
-                link: "https://github.com/bennyyang11/quickchat"
+                link: "https://github.com/bennyyang11/quickchat",
+                demo: "https://quickchat-demo.vercel.app"
             },
             venus: {
                 title: "VenusUI - Design System Library", 
                 description: "A beautiful and elegant React component library focused on accessibility and design consistency. Features customizable themes, responsive layouts, and smooth animations that make any application look stunning.",
+                image: "assets/images/projects/venus-ui.jpg",
+                features: [
+                    "50+ Accessible React Components",
+                    "Customizable Theme System",
+                    "Responsive Grid & Layout Components",
+                    "Smooth Animations & Transitions",
+                    "Comprehensive Storybook Documentation"
+                ],
                 tech: ["React", "TypeScript", "Styled Components", "Storybook", "Figma"],
-                link: "https://github.com/bennyyang11/venus-ui"
+                link: "https://github.com/bennyyang11/venus-ui",
+                demo: "https://venus-ui.netlify.app"
             },
             earth: {
                 title: "EcoTracker - Sustainability Platform",
                 description: "My home planet inspired this environmental impact tracking platform. Users can monitor their carbon footprint, set sustainability goals, and connect with eco-friendly communities. Built with love for our planet!",
+                image: "assets/images/projects/eco-tracker.jpg",
+                features: [
+                    "Carbon footprint calculation and tracking",
+                    "Sustainability goal setting and progress",
+                    "Eco-friendly community marketplace",
+                    "Environmental impact visualizations",
+                    "Green habits gamification system"
+                ],
                 tech: ["Next.js", "PostgreSQL", "Prisma", "Chart.js", "Docker"],
-                link: "https://github.com/bennyyang11/eco-tracker"
+                link: "https://github.com/bennyyang11/eco-tracker",
+                demo: "https://eco-tracker.vercel.app"
             },
             mars: {
                 title: "MarsColony - Space Exploration Game",
                 description: "An ambitious browser-based strategy game where players build and manage colonies on Mars. Features resource management, terraforming mechanics, and multiplayer cooperation. The red planet awaits!",
+                image: "assets/images/projects/mars-colony.jpg",
+                features: [
+                    "3D Mars terrain with realistic physics",
+                    "Resource mining and colony building",
+                    "Terraforming and atmosphere management",
+                    "Multiplayer cooperation and trading",
+                    "Research tree and technology progression"
+                ],
                 tech: ["Three.js", "WebGL", "Canvas API", "WebRTC", "Firebase"],
-                link: "https://github.com/bennyyang11/mars-colony"
+                link: "https://github.com/bennyyang11/mars-colony",
+                demo: "https://mars-colony.web.app"
             },
             jupiter: {
                 title: "JupiterDB - Distributed Database System",
                 description: "A massive and complex distributed database system designed for handling large-scale applications. Features automatic sharding, replication, and fault tolerance. As powerful and vast as Jupiter itself!",
+                image: "assets/images/projects/jupiter-db.jpg",
+                features: [
+                    "Automatic horizontal sharding",
+                    "Multi-region replication and failover",
+                    "ACID transactions with eventual consistency",
+                    "Real-time analytics and monitoring",
+                    "High-performance query optimization"
+                ],
                 tech: ["Go", "Kubernetes", "Redis", "Protocol Buffers", "Raft Consensus"],
-                link: "https://github.com/bennyyang11/jupiter-db"
+                link: "https://github.com/bennyyang11/jupiter-db",
+                demo: "https://jupiter-db-docs.github.io"
             },
             saturn: {
                 title: "SaturnRings - Task Management Platform",
                 description: "A beautifully structured project management platform with powerful organizational features. Teams can create projects, assign tasks, track progress, and collaborate seamlessly within Saturn's elegant rings of productivity.",
+                image: "assets/images/projects/saturn-rings.jpg",
+                features: [
+                    "Kanban boards with drag-and-drop",
+                    "Team collaboration and real-time updates",
+                    "Time tracking and productivity analytics",
+                    "Custom workflows and automation",
+                    "Integration with popular development tools"
+                ],
                 tech: ["Vue.js", "Express.js", "MongoDB", "GraphQL", "Jest"],
-                link: "https://github.com/bennyyang11/saturn-rings"
+                link: "https://github.com/bennyyang11/saturn-rings",
+                demo: "https://saturn-rings.herokuapp.com"
             },
             uranus: {
                 title: "UranusVR - Virtual Reality Experience",
                 description: "A unique and unconventional VR experience that lets users explore impossible geometries and mind-bending physics. This experimental project pushes the boundaries of what's possible in virtual reality.",
+                image: "assets/images/projects/uranus-vr.jpg",
+                features: [
+                    "Immersive WebXR virtual reality experience",
+                    "Non-Euclidean geometry exploration",
+                    "Physics-defying interactive environments",
+                    "Hand tracking and spatial interaction",
+                    "Cross-platform VR headset support"
+                ],
                 tech: ["A-Frame", "WebXR", "Three.js", "WebGL", "Blender"],
-                link: "https://github.com/bennyyang11/uranus-vr"
+                link: "https://github.com/bennyyang11/uranus-vr",
+                demo: "https://uranus-vr.netlify.app"
             },
             neptune: {
                 title: "NeptuneAI - Deep Learning Platform",
                 description: "A deep and mysterious machine learning platform for training and deploying AI models. Features automated hyperparameter tuning, model versioning, and scalable inference pipelines. Dive deep into the ocean of artificial intelligence!",
+                image: "assets/images/projects/neptune-ai.jpg",
+                features: [
+                    "Automated machine learning pipelines",
+                    "Hyperparameter optimization algorithms",
+                    "Model versioning and experiment tracking",
+                    "Scalable distributed training",
+                    "One-click model deployment and serving"
+                ],
                 tech: ["Python", "TensorFlow", "Docker", "Kubernetes", "MLflow"],
-                link: "https://github.com/bennyyang11/neptune-ai"
+                link: "https://github.com/bennyyang11/neptune-ai",
+                demo: "https://neptune-ai-platform.com"
             }
         };
 
@@ -496,29 +578,22 @@ class SpacePortfolio {
     }
 
     setupUI() {
-        // Close modal when clicking the X or outside the modal
-        const modal = document.getElementById('project-modal');
-        const closeBtn = modal.querySelector('.close-btn');
-        
+        // Set up overlay close button
+        const closeBtn = document.getElementById('close-overlay');
         if (closeBtn) {
             closeBtn.addEventListener('click', () => {
-                this.zoomToOverview();
+                this.hideProjectOverlay();
             });
         }
-        
-        // Close modal when clicking outside
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                this.zoomToOverview();
-            }
-        });
         
         // Add escape key listener for returning to overview
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.cameraState === 'planet') {
-                this.zoomToOverview();
+                this.hideProjectOverlay();
             }
         });
+        
+        console.log('Overlay UI setup complete');
     }
 
     onMouseClick(event) {
@@ -756,39 +831,82 @@ class SpacePortfolio {
         }, 2000);
     }
 
-    showProjectModal(projectKey) {
+    showProjectOverlay(projectKey) {
         const project = this.projectData[projectKey];
         if (!project) return;
 
-        console.log('Showing modal for:', projectKey);
+        console.log('Showing overlay for:', projectKey);
         
-        // Update modal content
-        document.getElementById('modal-title').textContent = project.title;
-        document.getElementById('modal-description').textContent = project.description;
+        // Update planet badge
+        const planetBadgeElement = document.getElementById('overlay-planet-badge');
+        if (planetBadgeElement) {
+            planetBadgeElement.textContent = projectKey.toUpperCase();
+        }
         
-        // Update tech stack if exists
-        const techElement = document.getElementById('modal-tech');
+        // Update project title
+        document.getElementById('overlay-title').textContent = project.title;
+        
+        // Update project image
+        const imageElement = document.getElementById('overlay-image');
+        if (project.image && imageElement) {
+            imageElement.src = project.image;
+            imageElement.alt = `${project.title} Screenshot`;
+            // Fallback to placeholder if image fails to load
+            imageElement.onerror = () => {
+                imageElement.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMTQxOTI4Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZmlsbD0iIzg3Q0VFQiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNvbWluZyBTb29uPC90ZXh0Pjwvc3ZnPg==';
+            };
+        }
+        
+        // Update description
+        document.getElementById('overlay-description').textContent = project.description;
+        
+        // Update features list
+        const featuresElement = document.getElementById('overlay-features');
+        if (project.features && featuresElement) {
+            featuresElement.innerHTML = project.features.map(feature => `<li>${feature}</li>`).join('');
+        }
+        
+        // Update tech stack
+        const techElement = document.getElementById('overlay-tech');
         if (project.tech && techElement) {
             techElement.innerHTML = project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('');
         }
         
-        // Update link if exists
-        const linkElement = document.getElementById('modal-link');
+        // Update GitHub link
+        const linkElement = document.getElementById('overlay-link');
         if (project.link && linkElement) {
             linkElement.href = project.link;
-            linkElement.style.display = 'inline-block';
+            linkElement.style.display = 'flex';
         } else if (linkElement) {
             linkElement.style.display = 'none';
         }
         
-        // Show modal
-        document.getElementById('project-modal').style.display = 'flex';
-        
-        // Set up back button
-        const backBtn = document.getElementById('back-to-overview');
-        if (backBtn) {
-            backBtn.onclick = () => this.zoomToOverview();
+        // Update demo link
+        const demoElement = document.getElementById('overlay-demo');
+        if (project.demo && demoElement) {
+            demoElement.href = project.demo;
+            demoElement.style.display = 'flex';
+        } else if (demoElement) {
+            demoElement.style.display = 'none';
         }
+        
+        // Show overlay with slide animation
+        const overlay = document.getElementById('project-overlay');
+        overlay.classList.add('show');
+        
+        // Set up close button
+        const closeBtn = document.getElementById('close-overlay');
+        if (closeBtn) {
+            closeBtn.onclick = () => this.hideProjectOverlay();
+        }
+    }
+
+    hideProjectOverlay() {
+        const overlay = document.getElementById('project-overlay');
+        overlay.classList.remove('show');
+        
+        // Return to overview
+        this.zoomToOverview();
     }
 
     animate() {
@@ -863,6 +981,18 @@ class SpacePortfolio {
             if (this.cameraTransition.progress >= 1) {
                 this.cameraTransition.active = false;
                 console.log('Camera transition completed');
+                
+                // Show project overlay if we just zoomed to a planet (with small delay for smoothness)
+                if (this.pendingProjectKey && this.cameraState === 'planet') {
+                    console.log('Showing overlay after zoom completion:', this.pendingProjectKey);
+                    const projectKey = this.pendingProjectKey;
+                    this.pendingProjectKey = null; // Clear the pending key
+                    
+                    // Small delay for smoother experience
+                    setTimeout(() => {
+                        this.showProjectOverlay(projectKey);
+                    }, 300);
+                }
             }
         }
     }
@@ -899,12 +1029,12 @@ class SpacePortfolio {
     }
 
     zoomToPlanet(projectKey) {
-        if (this.cameraState === 'planet') {
+        if (this.cameraState === 'planet' && !this.cameraTransition.active) {
             console.log('Already in planet mode, cancelling zoom to:', projectKey);
-            return; // Already zoomed
+            return; // Already zoomed and not transitioning
         }
         
-        console.log('Starting zoom to planet:', projectKey);
+        console.log('Starting zoom to planet:', projectKey, '- Overlay will appear when zoom completes!');
         
         // Find the target object
         let targetObject = null;
@@ -941,8 +1071,8 @@ class SpacePortfolio {
         this.cameraState = 'planet';
         this.selectedPlanet = { key: projectKey, object: targetObject, position: targetPosition };
         
-        // Show project modal
-        this.showProjectModal(projectKey);
+        // Store project key for when transition completes
+        this.pendingProjectKey = projectKey;
     }
     
     zoomToOverview() {
@@ -963,9 +1093,13 @@ class SpacePortfolio {
         this.cameraTransition.progress = 0;
         this.cameraState = 'overview';
         this.selectedPlanet = null;
+        this.pendingProjectKey = null; // Clear any pending project
         
-        // Hide modal
-        document.getElementById('project-modal').style.display = 'none';
+        // Hide overlay
+        const overlay = document.getElementById('project-overlay');
+        if (overlay) {
+            overlay.classList.remove('show');
+        }
     }
 
     // Camera controls for dragging to rotate around solar system

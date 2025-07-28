@@ -28,15 +28,48 @@
             </div>
         </div>
         
-        <!-- Project Modal -->
-        <div id="project-modal" class="project-modal" style="display: none;">
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-                <button id="back-to-overview" class="back-btn">← Back to Solar System</button>
-                <h2 id="modal-title">Project Title</h2>
-                <p id="modal-description">Project description goes here...</p>
-                <div id="modal-tech" class="tech-stack"></div>
-                <a id="modal-link" href="#" target="_blank" class="project-link">View Project</a>
+        <!-- Project Overlay (appears over 3D scene) -->
+        <div id="project-overlay" class="project-overlay">
+            <div class="overlay-content">
+                <button id="close-overlay" class="close-overlay-btn">✕</button>
+                
+                <!-- Project Header -->
+                <div class="project-header">
+                    <div class="planet-badge" id="overlay-planet-badge">EARTH</div>
+                    <h2 id="overlay-title">Project Title</h2>
+                </div>
+                
+                <!-- Project Image -->
+                <div class="project-image-section">
+                    <img id="overlay-image" src="" alt="Project Screenshot" class="overlay-project-image">
+                </div>
+                
+                <!-- Project Details -->
+                <div class="project-details">
+                    <p id="overlay-description">Project description goes here...</p>
+                    
+                    <!-- Key Features -->
+                    <div class="features-section">
+                        <h4>Key Features</h4>
+                        <ul id="overlay-features" class="features-list"></ul>
+                    </div>
+                    
+                    <!-- Tech Stack -->
+                    <div class="tech-section">
+                        <h4>Technologies</h4>
+                        <div id="overlay-tech" class="tech-stack"></div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <a id="overlay-link" href="#" target="_blank" class="action-btn primary-btn">
+                            <span>🔗 View Code</span>
+                        </a>
+                        <a id="overlay-demo" href="#" target="_blank" class="action-btn secondary-btn">
+                            <span>🚀 Live Demo</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

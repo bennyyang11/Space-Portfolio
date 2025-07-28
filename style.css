@@ -208,47 +208,7 @@ body {
     box-shadow: 0 10px 20px rgba(69, 183, 209, 0.3);
 }
 
-/* Back Button */
-.back-btn {
-    position: absolute;
-    top: 60px;
-    left: 20px;
-    padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #fff;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    font-size: 0.9rem;
-}
 
-.back-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
-
-/* Back button styling */
-.back-btn {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: rgba(135, 206, 235, 0.2);
-    border: 1px solid rgba(135, 206, 235, 0.5);
-    color: #87CEEB;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.875rem;
-    transition: all 0.2s;
-}
-
-.back-btn:hover {
-    background: rgba(135, 206, 235, 0.3);
-    border-color: #87CEEB;
-    transform: translateX(-2px);
-}
 
 /* Instructions */
 #instructions {
@@ -319,68 +279,268 @@ body {
     border: 1px solid rgba(135, 206, 235, 0.3);
 }
 
-/* Modal improvements */
-.project-modal {
-    display: none !important;
+/* Project Overlay System */
+.project-overlay {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    right: -450px; /* Start hidden off-screen */
+    width: 420px;
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(20, 25, 40, 0.95), rgba(30, 35, 50, 0.95));
+    backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(135, 206, 235, 0.3);
     z-index: 1000;
-    align-items: center;
-    justify-content: center;
+    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
 }
 
-.project-modal.show {
-    display: flex !important;
+.project-overlay.show {
+    right: 0; /* Slide in */
 }
 
-.modal-content {
-    background: rgba(20, 25, 40, 0.95);
-    color: white;
+.overlay-content {
+    height: 100%;
+    overflow-y: auto;
     padding: 2rem;
-    border-radius: 12px;
-    max-width: 500px;
-    width: 90%;
-    margin: 20px;
-    position: relative;
-    border: 1px solid rgba(135, 206, 235, 0.3);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.close-btn {
+.close-overlay-btn {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: none;
-    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: #87CEEB;
-    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     cursor: pointer;
-    padding: 0;
-    width: 30px;
-    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
 }
 
-.close-btn:hover {
+.close-overlay-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
     color: white;
+    transform: rotate(90deg);
 }
 
-.project-link {
+.project-header {
+    margin-top: 2rem;
+}
+
+.planet-badge {
     display: inline-block;
+    background: linear-gradient(45deg, #87CEEB, #4682B4);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.project-header h2 {
+    margin: 0;
+    color: #87CEEB;
+    font-size: 1.6rem;
+    line-height: 1.3;
+    border-bottom: 2px solid rgba(135, 206, 235, 0.3);
+    padding-bottom: 0.5rem;
+}
+
+.project-image-section {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(135, 206, 235, 0.2);
+}
+
+.overlay-project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.overlay-project-image:hover {
+    transform: scale(1.05);
+}
+
+.project-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.project-details p {
+    margin: 0;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+}
+
+.features-section h4,
+.tech-section h4 {
+    margin: 0 0 0.8rem 0;
+    color: #87CEEB;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.features-list {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.features-list li {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    font-size: 0.9rem;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+}
+
+.tech-tag {
+    background: linear-gradient(45deg, rgba(135, 206, 235, 0.2), rgba(135, 206, 235, 0.1));
+    color: #87CEEB;
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(135, 206, 235, 0.3);
+    transition: all 0.2s ease;
+}
+
+.tech-tag:hover {
+    background: rgba(135, 206, 235, 0.3);
+    transform: translateY(-1px);
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.2rem;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.primary-btn {
     background: linear-gradient(45deg, #667eea, #764ba2);
     color: white;
-    padding: 0.75rem 1.5rem;
-    text-decoration: none;
-    border-radius: 6px;
-    margin-top: 1rem;
-    transition: transform 0.2s;
 }
 
-.project-link:hover {
+.secondary-btn {
+    background: linear-gradient(45deg, #43a047, #66bb6a);
+    color: white;
+}
+
+.action-btn:hover {
     transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.action-btn span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Overlay Interaction Prevention */
+.project-overlay {
+    pointer-events: none; /* Allow clicks to pass through to 3D scene when hidden */
+}
+
+.project-overlay.show {
+    pointer-events: auto; /* Re-enable interactions when overlay is shown */
+}
+
+.overlay-content {
+    pointer-events: auto; /* Ensure overlay content is always interactive */
+}
+
+/* Prevent overlay from blocking 3D scene interactions */
+.project-overlay:not(.show) {
+    visibility: hidden; /* Completely hide when not shown */
+}
+
+/* Responsive Design for Overlay */
+@media (max-width: 768px) {
+    .project-overlay {
+        width: 100vw;
+        right: -100vw;
+    }
+    
+    .overlay-content {
+        padding: 1.5rem;
+    }
+    
+    .project-header h2 {
+        font-size: 1.4rem;
+    }
+    
+    .overlay-project-image {
+        height: 180px;
+    }
+    
+    .action-buttons {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    
+    .action-btn {
+        flex: 1;
+        padding: 0.7rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .overlay-content {
+        padding: 1rem;
+    }
+    
+    .project-header {
+        margin-top: 1rem;
+    }
+    
+    .project-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .overlay-project-image {
+        height: 150px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .features-list li {
+        font-size: 0.85rem;
+    }
 } 

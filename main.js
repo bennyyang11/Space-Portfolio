@@ -32,139 +32,133 @@ class SpacePortfolio {
         // Project data - you can modify this to add your actual projects
         this.projectData = {
             sun: {
-                title: "Ben Yang - Full Stack Developer",
-                description: "Welcome to my interactive portfolio! I'm a passionate full-stack developer with expertise in modern web technologies, 3D graphics, and innovative user experiences. This solar system represents my journey through different projects and technologies.",
-                image: "assets/images/projects/portfolio.jpg",
+                title: "Contact Me - Let's Connect!",
+                description: "Thank you for exploring my solar system portfolio! I'm always excited to discuss new opportunities, collaborate on innovative projects, or simply connect with fellow developers and tech enthusiasts. Whether you're interested in full-stack development, AI integration, mobile applications, or cutting-edge web technologies, I'd love to hear from you. Feel free to reach out through any of the channels below - I typically respond within 24 hours and am always open to interesting conversations about technology, software engineering, and creative problem-solving.",
                 features: [
-                    "Interactive 3D Solar System Portfolio",
-                    "Responsive Web Applications",
-                    "Full-Stack Development",
-                    "Modern UI/UX Design",
-                    "Cloud Infrastructure & DevOps"
+                    "📧 Email: benny.yang@gauntletai.com",
+                    "💼 LinkedIn: Connect with me professionally",
+                    "💻 GitHub: Explore my code and contributions",
+                    "🚀 Open to new opportunities and collaborations",
+                    "☕ Always happy to chat about technology and innovation"
                 ],
-                tech: ["JavaScript", "React", "Node.js", "Three.js", "Python", "AWS"],
+                tech: ["Full-Stack Development", "AI Integration", "Mobile Apps", "Web Technologies", "Open Source"],
                 link: "https://github.com/bennyyang11",
-                demo: "https://bennyyang.dev"
+                demo: "https://www.linkedin.com/in/byangln/"
             },
             mercury: {
-                title: "QuickChat - Real-time Messaging App",
-                description: "A lightning-fast real-time chat application built with WebSocket technology. Features include instant messaging, file sharing, emoji reactions, and typing indicators. Designed for speed and efficiency just like Mercury!",
-                image: "assets/images/projects/quickchat.jpg",
+                title: "Sorting Visualizer",
+                description: "This project is an interactive sorting visualizer that demonstrates how various sorting algorithms work in real-time. Users can choose from algorithms like Bubble Sort, Merge Sort, Quick Sort, Insertion Sort, and Selection Sort to observe how data is sorted step-by-step. It also allows users to customize the number of items being sorted and the speed of the animation, providing a hands-on, visual learning experience for understanding algorithm efficiency and behavior. The visualizer was built using JavaScript and React, utilizing state and animation hooks to control bar height, algorithm logic, and playback controls. This project helped strengthen my understanding of sorting algorithms, algorithmic complexity, and front-end UI interaction using component-based design.",
+                image: "assets/images/projects/Sorting_Visualizer.png",
                 features: [
-                    "Real-time messaging with Socket.io",
-                    "File sharing and image uploads",
-                    "Emoji reactions and typing indicators",
-                    "Group chats and private messaging",
-                    "Message encryption and user authentication"
+                    "Interactive visualization of 5+ sorting algorithms",
+                    "Real-time step-by-step algorithm demonstration",
+                    "Customizable array size and animation speed",
+                    "Visual comparison of algorithm efficiency",
+                    "Educational tool for understanding algorithmic complexity"
                 ],
-                tech: ["React", "Node.js", "Socket.io", "MongoDB", "Redis"],
-                link: "https://github.com/bennyyang11/quickchat",
-                demo: "https://quickchat-demo.vercel.app"
+                tech: ["JavaScript", "React", "CSS3", "Algorithms", "Data Structures"],
+                link: "https://github.com/bennyyang11/Sorting-Visualizer.git"
             },
             venus: {
-                title: "VenusUI - Design System Library", 
-                description: "A beautiful and elegant React component library focused on accessibility and design consistency. Features customizable themes, responsive layouts, and smooth animations that make any application look stunning.",
-                image: "assets/images/projects/venus-ui.jpg",
+                title: "Product Management API",
+                description: "This API serves as a backend system for managing product data in applications such as e-commerce platforms or inventory tracking systems. It allows clients to create, read, update, and delete (CRUD) product entries efficiently, making it an essential tool for any service that needs to handle dynamic product information. Built with Node.js and Express, the API uses MongoDB as the database to store and query product data. It includes endpoints for managing product attributes such as name, category, price, stock quantity, and more. The backend features optimized query performance, robust error handling, and a clean RESTful architecture to ensure scalability and seamless integration with frontend or third-party systems.",
+                image: "assets/images/projects/CRUD.png",
                 features: [
-                    "50+ Accessible React Components",
-                    "Customizable Theme System",
-                    "Responsive Grid & Layout Components",
-                    "Smooth Animations & Transitions",
-                    "Comprehensive Storybook Documentation"
+                    "Complete CRUD operations for product management",
+                    "RESTful API architecture with Express.js",
+                    "MongoDB database with optimized queries",
+                    "Robust error handling and validation",
+                    "Scalable backend for e-commerce platforms"
                 ],
-                tech: ["React", "TypeScript", "Styled Components", "Storybook", "Figma"],
-                link: "https://github.com/bennyyang11/venus-ui",
-                demo: "https://venus-ui.netlify.app"
+                tech: ["Node.js", "Express", "MongoDB", "REST API", "JavaScript"],
+                link: "https://github.com/bennyyang11/CRUD-App.git"
             },
             earth: {
-                title: "EcoTracker - Sustainability Platform",
-                description: "My home planet inspired this environmental impact tracking platform. Users can monitor their carbon footprint, set sustainability goals, and connect with eco-friendly communities. Built with love for our planet!",
-                image: "assets/images/projects/eco-tracker.jpg",
+                title: "Hamster Hunters - Multiplayer 3D FPS",
+                description: "An ambitious and hilariously creative multiplayer 3D first-person shooter that combines the intensity of Call of Duty with adorable hamsters! This browser-based game features real-time multiplayer combat with Socket.io, complete character class systems, and multiple game modes. Players can choose from unique hamster characters like 'Hammy Ali' and 'Ham Solo', each with distinct abilities and playstyles. The game includes sophisticated weapon mechanics, multiple combat scenarios, and supports 8-12 concurrent players with optimized performance targeting 60 FPS and sub-50ms latency. Built entirely with Three.js and JavaScript, this project showcases advanced 3D web development, real-time networking, and game design principles while maintaining a fun and engaging theme that makes competitive gaming accessible and enjoyable.",
+                image: "assets/images/projects/Hamster_Hunters.png",
                 features: [
-                    "Carbon footprint calculation and tracking",
-                    "Sustainability goal setting and progress",
-                    "Eco-friendly community marketplace",
-                    "Environmental impact visualizations",
-                    "Green habits gamification system"
+                    "Real-time multiplayer 3D FPS with Socket.io networking",
+                    "Unique hamster character classes and specialized abilities",
+                    "Multiple game modes: Team Deathmatch, Battle Royale, Gun Game",
+                    "Advanced weapon systems and combat mechanics",
+                    "Optimized performance: 60 FPS with 8-12 player support"
                 ],
-                tech: ["Next.js", "PostgreSQL", "Prisma", "Chart.js", "Docker"],
-                link: "https://github.com/bennyyang11/eco-tracker",
-                demo: "https://eco-tracker.vercel.app"
+                tech: ["Three.js", "JavaScript", "Socket.io", "WebGL", "Node.js"],
+                link: "https://github.com/bennyyang11/Hamster-Hunters.git",
+                demo: "https://hamster-hunter-production.up.railway.app"
             },
             mars: {
-                title: "MarsColony - Space Exploration Game",
-                description: "An ambitious browser-based strategy game where players build and manage colonies on Mars. Features resource management, terraforming mechanics, and multiplayer cooperation. The red planet awaits!",
-                image: "assets/images/projects/mars-colony.jpg",
+                title: "WordWiseAI - AI-Powered Writing Assistant",
+                description: "An intelligent writing companion that leverages OpenAI's advanced language models to transform how people write and communicate. This comprehensive platform provides real-time AI-powered writing suggestions, goal-based feedback systems, and interactive vocabulary enhancement tools. Built with modern TypeScript and React, WordWiseAI offers personalized writing improvement through sophisticated AI analysis that adapts to individual writing styles and objectives. The application features dynamic content analysis, contextual suggestions, and progressive learning modules that help users develop stronger writing skills over time. Whether for academic writing, professional communication, or creative expression, WordWiseAI serves as an intelligent writing mentor that provides actionable insights and improvements.",
+                image: "assets/images/projects/WordWiseAI.png",
                 features: [
-                    "3D Mars terrain with realistic physics",
-                    "Resource mining and colony building",
-                    "Terraforming and atmosphere management",
-                    "Multiplayer cooperation and trading",
-                    "Research tree and technology progression"
+                    "Real-time AI writing suggestions and grammar corrections",
+                    "Goal-based feedback system for targeted improvement",
+                    "Interactive vocabulary testing and enhancement tools",
+                    "Personalized writing analytics and progress tracking",
+                    "OpenAI integration for advanced language processing"
                 ],
-                tech: ["Three.js", "WebGL", "Canvas API", "WebRTC", "Firebase"],
-                link: "https://github.com/bennyyang11/mars-colony",
-                demo: "https://mars-colony.web.app"
+                tech: ["TypeScript", "React", "OpenAI API", "Vite", "Tailwind CSS"],
+                link: "https://github.com/bennyyang11/WordWiseAi",
+                demo: "https://word-wise-ai-uv39.vercel.app"
             },
             jupiter: {
-                title: "JupiterDB - Distributed Database System",
-                description: "A massive and complex distributed database system designed for handling large-scale applications. Features automatic sharding, replication, and fault tolerance. As powerful and vast as Jupiter itself!",
-                image: "assets/images/projects/jupiter-db.jpg",
+                title: "FlowGenius - AI-Enhanced File Manager",
+                description: "A revolutionary desktop application that transforms file management through artificial intelligence. Built with Electron, LangGraph, and N8N, FlowGenius automatically analyzes, classifies, and organizes files using advanced AI workflows. The application combines real-time file monitoring with sophisticated content understanding, generating intelligent tags and suggesting optimal folder structures. With its modern React interface featuring multi-tab navigation, users can browse files, view detailed AI analysis, monitor background processing, and configure automation settings. FlowGenius represents the future of intelligent file management, where files organize themselves based on content understanding rather than manual sorting. The system processes documents, code files, media, and archives with confidence scoring, ensuring reliable automation while maintaining user control over all organizational decisions.",
+                image: "assets/images/projects/FlowGenius.png",
                 features: [
-                    "Automatic horizontal sharding",
-                    "Multi-region replication and failover",
-                    "ACID transactions with eventual consistency",
-                    "Real-time analytics and monitoring",
-                    "High-performance query optimization"
+                    "AI-powered file classification and content analysis",
+                    "Real-time directory monitoring and automated organization",
+                    "LangGraph integration for sophisticated AI workflows",
+                    "Modern Electron desktop app with React interface",
+                    "N8N compatibility for visual workflow automation"
                 ],
-                tech: ["Go", "Kubernetes", "Redis", "Protocol Buffers", "Raft Consensus"],
-                link: "https://github.com/bennyyang11/jupiter-db",
-                demo: "https://jupiter-db-docs.github.io"
+                tech: ["Electron", "LangGraph", "N8N", "OpenAI API", "React", "JavaScript"],
+                link: "https://github.com/bennyyang11/FlowGenius"
             },
             saturn: {
-                title: "SaturnRings - Task Management Platform",
-                description: "A beautifully structured project management platform with powerful organizational features. Teams can create projects, assign tasks, track progress, and collaborate seamlessly within Saturn's elegant rings of productivity.",
-                image: "assets/images/projects/saturn-rings.jpg",
+                title: "Polisee - AI-Powered Political Engagement Platform",
+                description: "A groundbreaking open-source platform that democratizes political engagement through AI-powered bill analysis and personalized impact assessment. Originally developed as a collaborative group project, Polisee has evolved into a comprehensive civic technology solution that bridges the gap between complex legislation and citizen understanding. The platform leverages advanced AI workflows to analyze congressional bills, generate personalized impact reports based on user demographics, and provide verifiable source citations. Built with modern full-stack architecture featuring Next.js 15, TypeScript, and Supabase, Polisee integrates multiple APIs including Congress.gov for legislative data and OpenAI for intelligent analysis. The system includes sophisticated features like multi-step persona creation, advanced PDF viewing with text highlighting, sentiment feedback mechanisms, and real-time analytics, all designed to empower citizens with accessible, accurate political information.",
+                image: "assets/images/projects/Polisee.png",
                 features: [
-                    "Kanban boards with drag-and-drop",
-                    "Team collaboration and real-time updates",
-                    "Time tracking and productivity analytics",
-                    "Custom workflows and automation",
-                    "Integration with popular development tools"
+                    "AI-powered personalized bill analysis with OpenAI integration",
+                    "Multi-step persona creation for demographic profiling",
+                    "Advanced PDF viewer with text highlighting and citations",
+                    "Congress.gov API integration for real-time legislative data",
+                    "Sentiment feedback system and real-time analytics dashboard"
                 ],
-                tech: ["Vue.js", "Express.js", "MongoDB", "GraphQL", "Jest"],
-                link: "https://github.com/bennyyang11/saturn-rings",
-                demo: "https://saturn-rings.herokuapp.com"
+                tech: ["Next.js 15", "TypeScript", "Supabase", "OpenAI API", "PostgreSQL", "Python"],
+                link: "https://github.com/PoliseeAI/polisee",
+                demo: "https://poliseeai.com"
             },
             uranus: {
-                title: "UranusVR - Virtual Reality Experience",
-                description: "A unique and unconventional VR experience that lets users explore impossible geometries and mind-bending physics. This experimental project pushes the boundaries of what's possible in virtual reality.",
-                image: "assets/images/projects/uranus-vr.jpg",
+                title: "SnapConnect - AI-Powered Fitness Content Creator",
+                description: "A revolutionary mobile fitness application that transforms content creation through advanced AI integration and personalized engagement. Built with React Native and Expo, SnapConnect leverages multiple AI models including DALL-E 3, DALL-E 2, and Stable Diffusion XL to generate intelligent fitness content. The app features sophisticated RAG (Retrieval-Augmented Generation) implementation that creates personalized workout captions, motivational content, and AI-generated stickers tailored to individual fitness journeys. With Firebase backend integration, Zustand state management, and professional mobile architecture, SnapConnect targets fitness influencers and content creators seeking to enhance their social media presence. The application includes advanced prompt engineering, automatic background removal for AI stickers, context-aware content generation, and smart workout planning features, representing the cutting edge of mobile AI development in the fitness industry.",
+                image: "assets/images/projects/SnapConnect.png",
                 features: [
-                    "Immersive WebXR virtual reality experience",
-                    "Non-Euclidean geometry exploration",
-                    "Physics-defying interactive environments",
-                    "Hand tracking and spatial interaction",
-                    "Cross-platform VR headset support"
+                    "Multiple AI model integration (DALL-E 3, DALL-E 2, Stable Diffusion XL)",
+                    "RAG implementation for personalized fitness content generation",
+                    "Advanced AI sticker creation with automatic background removal",
+                    "React Native/Expo mobile app with TypeScript architecture",
+                    "Firebase backend and intelligent workout planning features"
                 ],
-                tech: ["A-Frame", "WebXR", "Three.js", "WebGL", "Blender"],
-                link: "https://github.com/bennyyang11/uranus-vr",
-                demo: "https://uranus-vr.netlify.app"
+                tech: ["React Native", "Expo", "TypeScript", "OpenAI API", "Firebase", "Zustand"],
+                link: "https://github.com/bennyyang11/SnapConnect"
             },
             neptune: {
-                title: "NeptuneAI - Deep Learning Platform",
-                description: "A deep and mysterious machine learning platform for training and deploying AI models. Features automated hyperparameter tuning, model versioning, and scalable inference pipelines. Dive deep into the ocean of artificial intelligence!",
-                image: "assets/images/projects/neptune-ai.jpg",
+                title: "RISC-V Processor - 5-Stage Pipelined CPU",
+                description: "A comprehensive implementation of a 5-stage pipelined RISC-V processor built from scratch using Verilog, demonstrating deep understanding of computer architecture and hardware design principles. This project simulates how modern CPUs efficiently handle multiple instructions concurrently through instruction fetch, decode, execute, memory access, and write-back stages. The processor includes sophisticated features such as hazard detection mechanisms, data forwarding pathways, and advanced control logic to manage pipeline stalls while maintaining correct execution order. Built with a custom instruction set and rigorously tested through comprehensive verification, this hands-on implementation showcases mastery of CPU design fundamentals, timing constraints, and hardware debugging methodologies. The project represents the intersection of theoretical computer architecture knowledge and practical hardware implementation skills.",
+                image: "assets/images/projects/RiscV.png",
                 features: [
-                    "Automated machine learning pipelines",
-                    "Hyperparameter optimization algorithms",
-                    "Model versioning and experiment tracking",
-                    "Scalable distributed training",
-                    "One-click model deployment and serving"
+                    "5-stage pipelined architecture (Fetch, Decode, Execute, Memory, Writeback)",
+                    "Hazard detection and data forwarding for pipeline optimization",
+                    "Custom instruction set implementation and verification",
+                    "Advanced control logic for pipeline stall management",
+                    "Built from scratch using Verilog with comprehensive testing"
                 ],
-                tech: ["Python", "TensorFlow", "Docker", "Kubernetes", "MLflow"],
-                link: "https://github.com/bennyyang11/neptune-ai",
-                demo: "https://neptune-ai-platform.com"
+                tech: ["Verilog", "RISC-V ISA", "Digital Logic Design", "Hardware Simulation", "CPU Architecture"],
+                link: "https://github.com/bennyyang11/risc-v-processor"
             }
         };
 
@@ -367,6 +361,7 @@ class SpacePortfolio {
                 
                 // Position planet
                 planet.position.x = distance;
+                planet.position.y = -0.8; // Move down to align with orbital plane (GLB models often have offset geometry)
                 planet.castShadow = true;
                 planet.receiveShadow = true;
                 
@@ -428,6 +423,7 @@ class SpacePortfolio {
                 const fallbackPlanet = new THREE.Mesh(fallbackGeometry, fallbackMaterial);
                 
                 fallbackPlanet.position.x = distance;
+                fallbackPlanet.position.y = -0.4; // Slight adjustment for fallback spheres
                 fallbackPlanet.castShadow = true;
                 fallbackPlanet.receiveShadow = true;
                 fallbackPlanet.userData = { 
@@ -482,6 +478,7 @@ class SpacePortfolio {
             
             // Position planet
             planet.position.x = distance;
+            planet.position.y = 0; // Regular spheres are usually centered correctly
             planet.castShadow = true;
             planet.receiveShadow = true;
             
@@ -494,12 +491,31 @@ class SpacePortfolio {
                 clickable: true 
             };
             
+            // Create invisible larger hitbox for easier clicking (sphere version)
+            let hitboxSize = 1.0; // Default hitbox for most planets
+            
+            // Special handling for Mercury's massive scale (25x)
+            if (name.toLowerCase() === 'mercury') {
+                hitboxSize = 0.15; // Extra small hitbox for Mercury
+            }
+            
+            const hitboxGeometry = new THREE.SphereGeometry(hitboxSize, 16, 16);
+            const hitboxMaterial = new THREE.MeshBasicMaterial({ 
+                transparent: true, 
+                opacity: 0,
+                visible: false
+            });
+            const hitbox = new THREE.Mesh(hitboxGeometry, hitboxMaterial);
+            hitbox.userData = { type: 'hitbox', planetName: name };
+            planet.add(hitbox);
+            
             planetGroup.add(planet);
             
             // Store planet data with better speed calculation
             this.planets.push({
                 group: planetGroup,
                 mesh: planet,
+                hitbox: hitbox,
                 name: name,
                 distance: distance,
                 speed: 0.02 / Math.sqrt(distance) // More realistic orbital speed
@@ -848,13 +864,66 @@ class SpacePortfolio {
         
         // Update project image
         const imageElement = document.getElementById('overlay-image');
-        if (project.image && imageElement) {
+        const imageSection = document.querySelector('.project-image-section');
+        
+        if (imageElement && project.image) {
+            console.log('Setting image src to:', project.image);
             imageElement.src = project.image;
             imageElement.alt = `${project.title} Screenshot`;
+            imageElement.style.cursor = 'pointer'; // Show it's clickable
+            
+            // Show image section
+            if (imageSection) {
+                imageSection.style.display = 'block';
+            }
+            
+            // Add click handler to open larger version
+            imageElement.onclick = () => {
+                const lightbox = document.createElement('div');
+                lightbox.className = 'image-lightbox';
+                lightbox.innerHTML = `
+                    <div class="lightbox-content">
+                        <span class="lightbox-close">&times;</span>
+                        <img src="${project.image}" alt="${project.title} - Full Size" class="lightbox-image">
+                        <div class="lightbox-caption">${project.title}</div>
+                    </div>
+                `;
+                
+                // Add to page
+                document.body.appendChild(lightbox);
+                
+                // Close on click outside or close button
+                lightbox.onclick = (e) => {
+                    if (e.target === lightbox || e.target.className === 'lightbox-close') {
+                        document.body.removeChild(lightbox);
+                    }
+                };
+                
+                // Close on escape key
+                const escHandler = (e) => {
+                    if (e.key === 'Escape') {
+                        document.body.removeChild(lightbox);
+                        document.removeEventListener('keydown', escHandler);
+                    }
+                };
+                document.addEventListener('keydown', escHandler);
+            };
+            
+            // Add load success handler
+            imageElement.onload = () => {
+                console.log('Image loaded successfully:', project.image);
+            };
+            
             // Fallback to placeholder if image fails to load
             imageElement.onerror = () => {
-                imageElement.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMTQxOTI4Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZmlsbD0iIzg3Q0VFQiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNvbWluZyBTb29uPC90ZXh0Pjwvc3ZnPg==';
+                console.error('Failed to load image:', project.image);
+                imageElement.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMzMzIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzg3Q0VFQiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIE5vdCBGb3VuZDwvdGV4dD48L3N2Zz4=';
             };
+        } else {
+            // Hide the entire image section when no image is provided (e.g., for contact page)
+            if (imageSection) {
+                imageSection.style.display = 'none';
+            }
         }
         
         // Update description
@@ -863,7 +932,17 @@ class SpacePortfolio {
         // Update features list
         const featuresElement = document.getElementById('overlay-features');
         if (project.features && featuresElement) {
-            featuresElement.innerHTML = project.features.map(feature => `<li>${feature}</li>`).join('');
+            if (projectKey === 'sun') {
+                // Special handling for contact page - make email clickable
+                featuresElement.innerHTML = project.features.map(feature => {
+                    if (feature.includes('benny.yang@gauntletai.com')) {
+                        return `<li>📧 Email: <a href="mailto:benny.yang@gauntletai.com" style="color: #87CEEB; text-decoration: underline;">benny.yang@gauntletai.com</a></li>`;
+                    }
+                    return `<li>${feature}</li>`;
+                }).join('');
+            } else {
+                featuresElement.innerHTML = project.features.map(feature => `<li>${feature}</li>`).join('');
+            }
         }
         
         // Update tech stack
@@ -877,6 +956,16 @@ class SpacePortfolio {
         if (project.link && linkElement) {
             linkElement.href = project.link;
             linkElement.style.display = 'flex';
+            
+            // Update button text based on project type
+            const linkText = linkElement.querySelector('span');
+            if (linkText) {
+                if (projectKey === 'sun') {
+                    linkText.textContent = '💻 GitHub Profile';
+                } else {
+                    linkText.textContent = '🔗 View Code';
+                }
+            }
         } else if (linkElement) {
             linkElement.style.display = 'none';
         }
@@ -886,6 +975,16 @@ class SpacePortfolio {
         if (project.demo && demoElement) {
             demoElement.href = project.demo;
             demoElement.style.display = 'flex';
+            
+            // Update button text based on project type
+            const demoText = demoElement.querySelector('span');
+            if (demoText) {
+                if (projectKey === 'sun') {
+                    demoText.textContent = '💼 LinkedIn Profile';
+                } else {
+                    demoText.textContent = '🚀 Live Demo';
+                }
+            }
         } else if (demoElement) {
             demoElement.style.display = 'none';
         }

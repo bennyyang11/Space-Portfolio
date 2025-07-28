@@ -6,22 +6,23 @@ This folder contains screenshots and images for each project in the Space Portfo
 
 Add your project screenshots with these exact filenames:
 
-- `portfolio.jpg` - Your main portfolio/personal branding image
-- `quickchat.jpg` - QuickChat messaging app screenshot
-- `venus-ui.jpg` - VenusUI component library screenshot
-- `eco-tracker.jpg` - EcoTracker sustainability platform screenshot
-- `mars-colony.jpg` - MarsColony game screenshot
-- `jupiter-db.jpg` - JupiterDB database system screenshot
-- `saturn-rings.jpg` - SaturnRings task management screenshot
-- `uranus-vr.jpg` - UranusVR virtual reality experience screenshot
-- `neptune-ai.jpg` - NeptuneAI machine learning platform screenshot
+- ~~`contact.jpg`~~ - No image needed for contact page (text-only)
+- `Sorting_Visualizer.png` - ✅ **Added!** Interactive sorting algorithm visualizer (Mercury)
+- `CRUD.png` - ✅ **Added!** Product Management API with Node.js & MongoDB (Venus)
+- `Hamster_Hunters.png` - ✅ **Added!** Multiplayer 3D FPS game with Three.js & Socket.io (Earth)
+- `WordWiseAI.png` - ✅ **Added!** AI-powered writing assistant with OpenAI integration (Mars)
+- `FlowGenius.png` - ✅ **Added!** AI-enhanced file manager with Electron & LangGraph (Jupiter)
+- `Polisee.png` - ✅ **Added!** AI-powered political engagement platform (open source group project) (Saturn)
+- `SnapConnect.png` - ✅ **Added!** AI-powered fitness content creator mobile app (Uranus)
+- `RiscV.png` - ✅ **Added!** 5-stage pipelined RISC-V processor in Verilog (Neptune)
 
 ## Image Guidelines
 
 - **Dimensions**: Recommended 800x600px or 16:9 aspect ratio
-- **Format**: JPG or PNG
-- **Size**: Keep under 500KB for optimal loading
+- **Format**: JPEG (.jpg/.jpeg), PNG (.png), WebP (.webp), SVG (.svg)
+- **Size**: Keep under 500KB for optimal loading (WebP recommended for best compression)
 - **Content**: Show the main interface or key features of your project
+- **Quality**: Use 80-90% JPEG quality for best size/quality balance
 
 ## Placeholder Handling
 

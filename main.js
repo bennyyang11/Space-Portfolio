@@ -119,7 +119,6 @@ class SpacePortfolio {
                 ],
                 tech: ["Electron", "LangGraph", "TypeScript", "AI/ML", "Node.js"],
                 link: "https://github.com/bennyyang11/FlowGenius",
-                demo: "https://flowgenius-ai.com",
                 demoVideo: "https://www.loom.com/share/0ac0ffad8d2d4437904b90e3e24b4aa2"
             },
             saturn: {
@@ -151,7 +150,6 @@ class SpacePortfolio {
                 ],
                 tech: ["React Native", "Expo", "TypeScript", "OpenAI API", "Firebase", "Zustand"],
                 link: "https://github.com/bennyyang11/SnapConnect",
-                demo: "https://expo.dev/@bennyyang11/snapconnect",
                 demoVideo: "https://www.loom.com/share/be3865a2e3284c98ab1cf4470db2d1b7"
             },
             neptune: {
@@ -165,8 +163,7 @@ class SpacePortfolio {
                     "Advanced control logic for pipeline stall management",
                     "Built from scratch using Verilog with comprehensive testing"
                 ],
-                tech: ["Verilog", "RISC-V ISA", "Digital Logic Design", "Hardware Simulation", "CPU Architecture"],
-                link: "https://github.com/bennyyang11/risc-v-processor"
+                tech: ["Verilog", "RISC-V ISA", "Digital Logic Design", "Hardware Simulation", "CPU Architecture"]
             }
         };
 

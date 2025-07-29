@@ -58,44 +58,158 @@
         <div id="about-screen" class="about-screen">
             <button id="back-button" class="back-button">← Back</button>
             <div class="about-content">
-                <h1 class="about-title">About Me</h1>
-                <div class="professional-intro">
-                    <p class="intro-text">
-                        <strong>Benjamin Yang</strong><br>
-                        <span class="title-line">Software Engineer & Technology Innovator</span>
-                    </p>
-                    <div class="credentials">
-                        <p class="about-description">
-                            I am a recent graduate from the University of Colorado Boulder with a Bachelor of Arts & Science 
-                            in Computer Science and a minor in Computer Engineering. As a dedicated software engineer, 
-                            I bring expertise in full-stack development, artificial intelligence, and modern system architecture.
-                        </p>
-                        <p class="about-description">
-                            My technical portfolio demonstrates proficiency across diverse domains, from interactive gaming 
-                            platforms to enterprise-level APIs. I consistently focus on performance optimization, 
-                            innovative problem-solving, and delivering scalable solutions that meet real-world challenges.
-                        </p>
-                        <div class="expertise-areas">
-                            <h3>Core Competencies</h3>
-                            <ul class="skills-list">
-                                <li>Full-Stack Web Development (React, Node.js, TypeScript)</li>
-                                <li>Machine Learning & AI Implementation</li>
-                                <li>Database Design & System Architecture</li>
-                                <li>Hardware Design & Digital Logic (RISC-V, Verilog)</li>
-                                <li>Cloud Technologies & Performance Optimization</li>
-                            </ul>
+                <div class="professional-header">
+                    <div class="profile-section">
+                        <h1 class="about-title">Benjamin Yang</h1>
+                        <h2 class="professional-subtitle">Software Engineer & Technology Innovator</h2>
+                        <div class="contact-info">
+                            <span class="contact-item">📧 benny.yang@gauntletai.com</span>
+                            <span class="contact-item">📍 Aurora, Colorado</span>
+                            <span class="contact-item">🎓 University of Colorado Boulder</span>
                         </div>
-                        <p class="personal-note">
-                            Beyond technical pursuits, I maintain an active lifestyle through sports and fitness, 
-                            believing that personal well-being enhances professional performance and creative thinking.
-                        </p>
                     </div>
                 </div>
+
+                <div class="professional-body">
+                    <div class="section summary-section">
+                        <h3 class="section-title">Professional Summary</h3>
+                        <p class="summary-text">
+                            Recent Computer Science graduate from the University of Colorado Boulder with a proven track record 
+                            in full-stack development, artificial intelligence, and innovative technology solutions. Passionate 
+                            about creating scalable applications that solve real-world problems and enhance user experiences 
+                            through cutting-edge technology.
+                        </p>
+                    </div>
+
+                    <div class="section education-section">
+                        <h3 class="section-title">Education</h3>
+                        <div class="education-item">
+                            <div class="education-header">
+                                <h4>Bachelor of Arts & Science in Computer Science</h4>
+                                <span class="education-date">2024</span>
+                            </div>
+                            <p class="education-school">University of Colorado Boulder</p>
+                            <p class="education-minor">Minor in Computer Engineering</p>
+                        </div>
+                    </div>
+
+                    <div class="section experience-section">
+                        <h3 class="section-title">Professional Experience</h3>
+                        <div class="experience-list">
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <div class="experience-title-group">
+                                        <h4 class="experience-title">Cloud Desktop Engineer Intern</h4>
+                                        <p class="experience-company">IBM • Denver, CO (Remote)</p>
+                                    </div>
+                                    <span class="experience-date">Dec 2024 - Present</span>
+                                </div>
+                                <ul class="experience-responsibilities">
+                                    <li>Design and implement authentication and authorization architecture for State Farm's Virtual Desktop as a Service (DaaS) solution using AWS WorkSpaces</li>
+                                    <li>Develop backend logic to route clients to nearest AWS regions for optimal performance and accessibility</li>
+                                    <li>Automate cloud infrastructure deployments using Terraform, improving deployment speed and consistency</li>
+                                    <li>Provision and manage AWS cloud resources including EC2 instances for secure, scalable virtual desktop environments</li>
+                                </ul>
+                            </div>
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <div class="experience-title-group">
+                                        <h4 class="experience-title">IT Intern</h4>
+                                        <p class="experience-company">Lavnar Education • Denver, CO</p>
+                                    </div>
+                                    <span class="experience-date">Jun 2023 - Aug 2023</span>
+                                </div>
+                                <ul class="experience-responsibilities">
+                                    <li>Created comprehensive class agendas, curriculum, and project ideas for high school summer coding camps serving up to 12 students per week</li>
+                                    <li>Instructed fundamental coding concepts including syntax, pseudo-code, data structures (queues, stacks, binary search trees, linked lists)</li>
+                                    <li>Trained students in problem-solving techniques and debugging methodologies to identify and resolve code errors</li>
+                                    <li>Conducted thorough code reviews and managed grading processes for all student projects and assessments</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section skills-section">
+                        <h3 class="section-title">Technical Expertise</h3>
+                        <div class="skills-grid">
+                            <div class="skill-category">
+                                <h4 class="skill-category-title">Frontend Development</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">React</span>
+                                    <span class="skill-tag">TypeScript</span>
+                                    <span class="skill-tag">JavaScript</span>
+                                    <span class="skill-tag">Three.js</span>
+                                    <span class="skill-tag">Tailwind CSS</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4 class="skill-category-title">Backend Development</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Node.js</span>
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">PostgreSQL</span>
+                                    <span class="skill-tag">MongoDB</span>
+                                    <span class="skill-tag">Firebase</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4 class="skill-category-title">AI & Machine Learning</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">OpenAI API</span>
+                                    <span class="skill-tag">LangGraph</span>
+                                    <span class="skill-tag">RAG Systems</span>
+                                    <span class="skill-tag">AI Workflows</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4 class="skill-category-title">Cloud & Infrastructure</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">AWS WorkSpaces</span>
+                                    <span class="skill-tag">AWS EC2</span>
+                                    <span class="skill-tag">Terraform</span>
+                                    <span class="skill-tag">React Native</span>
+                                    <span class="skill-tag">Expo</span>
+                                    <span class="skill-tag">Next.js</span>
+                                    <span class="skill-tag">Vercel</span>
+                                    <span class="skill-tag">Supabase</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section projects-highlight">
+                        <h3 class="section-title">Key Achievements</h3>
+                        <div class="achievements-list">
+                            <div class="achievement-item">
+                                <div class="achievement-icon">🤖</div>
+                                <div class="achievement-content">
+                                    <h4>AI-Powered Applications</h4>
+                                    <p>Developed multiple AI-integrated applications including WordWiseAI and SnapConnect, demonstrating expertise in OpenAI integration and intelligent user experiences.</p>
+                                </div>
+                            </div>
+                            <div class="achievement-item">
+                                <div class="achievement-icon">🌐</div>
+                                <div class="achievement-content">
+                                    <h4>Full-Stack Solutions</h4>
+                                    <p>Built comprehensive web applications from concept to deployment, including real-time multiplayer games and political engagement platforms.</p>
+                                </div>
+                            </div>
+                            <div class="achievement-item">
+                                <div class="achievement-icon">⚡</div>
+                                <div class="achievement-content">
+                                    <h4>Performance Optimization</h4>
+                                    <p>Consistently delivered high-performance applications with focus on scalability, user experience, and modern development practices.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="about-action">
                     <button id="enter-portfolio-btn" class="enter-btn">
-                        🚀 Enter Portfolio
+                        🚀 Explore My Projects
                     </button>
-                    <p class="enter-hint">Explore my interactive solar system of projects</p>
+                    <p class="enter-hint">View my interactive project portfolio</p>
                 </div>
             </div>
         </div>
@@ -139,6 +253,9 @@
                         </a>
                         <a id="overlay-demo" href="#" target="_blank" class="action-btn secondary-btn">
                             <span>🚀 Live Demo</span>
+                        </a>
+                        <a id="overlay-demo-video" href="#" target="_blank" class="action-btn video-btn">
+                            <span>🎥 Demo Video</span>
                         </a>
                     </div>
                 </div>

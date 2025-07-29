@@ -19,6 +19,7 @@ class SpacePortfolio {
         this.cameraState = 'welcome'; // 'welcome', 'overview' or 'planet'
         this.selectedPlanet = null;
         this.pendingProjectKey = null; // Stores project key until zoom completes
+        this.interactionBlocked = false; // Prevents accidental clicks after closing overlay
         this.cameraTransition = {
             active: false,
             progress: 0,
@@ -86,7 +87,8 @@ class SpacePortfolio {
                 ],
                 tech: ["Three.js", "JavaScript", "Socket.io", "WebGL", "Node.js"],
                 link: "https://github.com/bennyyang11/Hamster-Hunters.git",
-                demo: "https://hamster-hunter-production.up.railway.app"
+                demo: "https://hamster-hunter-production.up.railway.app",
+                demoVideo: "https://www.loom.com/share/2a73bd0e6fd04e9ead5af83fed7cc1c2"
             },
             mars: {
                 title: "WordWiseAI - AI-Powered Writing Assistant",
@@ -101,21 +103,24 @@ class SpacePortfolio {
                 ],
                 tech: ["TypeScript", "React", "OpenAI API", "Vite", "Tailwind CSS"],
                 link: "https://github.com/bennyyang11/WordWiseAi",
-                demo: "https://word-wise-ai-uv39.vercel.app"
+                demo: "https://word-wise-ai-uv39.vercel.app",
+                demoVideo: "https://www.loom.com/share/8dab7c7ffed94c9a90d10c0b6b93b0a4"
             },
             jupiter: {
                 title: "FlowGenius - AI-Enhanced File Manager",
-                description: "A revolutionary desktop application that transforms file management through artificial intelligence. Built with Electron, LangGraph, and N8N, FlowGenius automatically analyzes, classifies, and organizes files using advanced AI workflows. The application combines real-time file monitoring with sophisticated content understanding, generating intelligent tags and suggesting optimal folder structures. With its modern React interface featuring multi-tab navigation, users can browse files, view detailed AI analysis, monitor background processing, and configure automation settings. FlowGenius represents the future of intelligent file management, where files organize themselves based on content understanding rather than manual sorting. The system processes documents, code files, media, and archives with confidence scoring, ensuring reliable automation while maintaining user control over all organizational decisions.",
+                description: "A revolutionary file management system that transforms how users interact with their digital workspace through advanced AI integration and intelligent automation. Built with Electron and LangGraph, FlowGenius provides seamless file organization, smart categorization, and AI-powered content analysis. The application features sophisticated natural language processing for file search, automated workflow generation, and intelligent suggestions for file management tasks. Users can interact with their files through conversational AI, receive personalized organization recommendations, and benefit from advanced automation that learns from usage patterns. FlowGenius represents the future of file management, where artificial intelligence enhances productivity and simplifies complex organizational tasks through intuitive, context-aware interactions.",
                 image: "images/projects/FlowGenius.png",
                 features: [
-                    "AI-powered file classification and content analysis",
-                    "Real-time directory monitoring and automated organization",
-                    "LangGraph integration for sophisticated AI workflows",
-                    "Modern Electron desktop app with React interface",
-                    "N8N compatibility for visual workflow automation"
+                    "AI-powered file organization and smart categorization system",
+                    "Natural language processing for intuitive file search",
+                    "LangGraph integration for advanced workflow automation",
+                    "Electron-based desktop application with cross-platform support",
+                    "Intelligent suggestions and personalized file management recommendations"
                 ],
-                tech: ["Electron", "LangGraph", "N8N", "OpenAI API", "React", "JavaScript"],
-                link: "https://github.com/bennyyang11/FlowGenius"
+                tech: ["Electron", "LangGraph", "TypeScript", "AI/ML", "Node.js"],
+                link: "https://github.com/bennyyang11/FlowGenius",
+                demo: "https://flowgenius-ai.com",
+                demoVideo: "https://www.loom.com/share/0ac0ffad8d2d4437904b90e3e24b4aa2"
             },
             saturn: {
                 title: "Polisee - AI-Powered Political Engagement Platform",
@@ -130,7 +135,8 @@ class SpacePortfolio {
                 ],
                 tech: ["Next.js 15", "TypeScript", "Supabase", "OpenAI API", "PostgreSQL", "Python"],
                 link: "https://github.com/PoliseeAI/polisee",
-                demo: "https://poliseeai.com"
+                demo: "https://poliseeai.com",
+                demoVideo: "https://www.loom.com/share/af25ebca8f4349b4894135f8ecc53d30"
             },
             uranus: {
                 title: "SnapConnect - AI-Powered Fitness Content Creator",
@@ -144,7 +150,9 @@ class SpacePortfolio {
                     "Firebase backend and intelligent workout planning features"
                 ],
                 tech: ["React Native", "Expo", "TypeScript", "OpenAI API", "Firebase", "Zustand"],
-                link: "https://github.com/bennyyang11/SnapConnect"
+                link: "https://github.com/bennyyang11/SnapConnect",
+                demo: "https://expo.dev/@bennyyang11/snapconnect",
+                demoVideo: "https://www.loom.com/share/be3865a2e3284c98ab1cf4470db2d1b7"
             },
             neptune: {
                 title: "RISC-V Processor - 5-Stage Pipelined CPU",
@@ -619,7 +627,9 @@ class SpacePortfolio {
         // Set up overlay close button
         const closeBtn = document.getElementById('close-overlay');
         if (closeBtn) {
-            closeBtn.addEventListener('click', () => {
+            closeBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
                 this.hideProjectOverlay();
             });
         }
@@ -792,6 +802,12 @@ class SpacePortfolio {
     onMouseClick(event) {
         const self = this; // Store reference for nested functions
         console.log('Mouse click detected!', event.clientX, event.clientY);
+        
+        // Check if interactions are temporarily blocked
+        if (this.interactionBlocked) {
+            console.log('Interactions blocked, ignoring click');
+            return;
+        }
         
         // Don't handle planet clicks during welcome screen
         if (this.cameraState === 'welcome') {
@@ -1191,6 +1207,15 @@ class SpacePortfolio {
             demoElement.style.display = 'none';
         }
         
+        // Update demo video link
+        const demoVideoElement = document.getElementById('overlay-demo-video');
+        if (project.demoVideo && demoVideoElement) {
+            demoVideoElement.href = project.demoVideo;
+            demoVideoElement.style.display = 'flex';
+        } else if (demoVideoElement) {
+            demoVideoElement.style.display = 'none';
+        }
+        
         // Show overlay with slide animation
         const overlay = document.getElementById('project-overlay');
         overlay.classList.add('show');
@@ -1198,7 +1223,11 @@ class SpacePortfolio {
         // Set up close button
         const closeBtn = document.getElementById('close-overlay');
         if (closeBtn) {
-            closeBtn.onclick = () => this.hideProjectOverlay();
+            closeBtn.onclick = (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                this.hideProjectOverlay();
+            };
         }
     }
 
@@ -1206,8 +1235,19 @@ class SpacePortfolio {
         const overlay = document.getElementById('project-overlay');
         overlay.classList.remove('show');
         
+        // Add a brief delay to prevent accidental clicks on other planets
+        this.preventInteractionsBriefly();
+        
         // Return to overview
         this.zoomToOverview();
+    }
+    
+    preventInteractionsBriefly() {
+        // Temporarily disable mouse interactions to prevent accidental clicks
+        this.interactionBlocked = true;
+        setTimeout(() => {
+            this.interactionBlocked = false;
+        }, 500); // 500ms delay to prevent accidental interactions
     }
 
     animate() {

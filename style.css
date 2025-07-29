@@ -188,15 +188,15 @@ body {
     pointer-events: none;
 }
 
-/* About Screen */
+/* About Me Screen - Professional Layout */
 .about-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
+    background: linear-gradient(135deg, rgba(10, 15, 25, 0.95), rgba(20, 25, 35, 0.95));
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -204,9 +204,9 @@ body {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
     overflow-y: auto;
-    padding: 2rem 0;
+    padding: 1rem 0;
 }
 
 .about-screen.show {
@@ -216,183 +216,347 @@ body {
 }
 
 .about-content {
-    text-align: center;
     max-width: 1200px;
+    width: 100%;
     padding: 2rem;
-    margin: auto;
-    /* Floating in space effect */
+    margin: 0 auto;
+    text-align: left;
 }
 
-/* Back button for about screen */
-.back-button {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    color: white;
-    border: 2px solid #87CEEB;
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 
-        0 0 15px rgba(135, 206, 235, 0.5),
-        0 0 25px rgba(102, 126, 234, 0.3);
-    text-shadow: 
-        0 0 8px rgba(255, 255, 255, 0.6),
-        2px 2px 4px rgba(0, 0, 0, 0.8);
-    animation: buttonFloat 4s ease-in-out infinite;
-    z-index: 1001;
+/* Professional Header */
+.professional-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid rgba(135, 206, 235, 0.3);
 }
 
-.back-button:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 
-        0 0 25px rgba(135, 206, 235, 0.8),
-        0 0 35px rgba(102, 126, 234, 0.6);
-    border-color: #ffffff;
+.profile-section {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .about-title {
-    font-size: 4.5rem;
-    font-weight: 900;
-    margin-bottom: 3rem;
-    color: #ffffff;
-    text-transform: uppercase;
-    letter-spacing: 6px;
-    /* Bubble letter effect */
-    -webkit-text-stroke: 3px #87CEEB;
-    text-stroke: 3px #87CEEB;
-    text-shadow: 
-        0 0 20px rgba(135, 206, 235, 0.8),
-        0 0 40px rgba(135, 206, 235, 0.6),
-        0 0 60px rgba(135, 206, 235, 0.4),
-        5px 5px 0px #4682B4,
-        10px 10px 0px #2F4F4F,
-        15px 15px 0px #1C1C1C,
-        20px 20px 30px rgba(0, 0, 0, 0.8);
-    transform: perspective(500px) rotateX(15deg);
-    animation: float 4s ease-in-out infinite, glow 3s ease-in-out infinite alternate;
-}
-
-.professional-intro {
-    margin-bottom: 3rem;
-    text-align: left;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.intro-text {
-    text-align: center;
-    margin-bottom: 2.5rem;
-    font-size: 1.8rem;
-    color: #ffffff;
-    text-shadow: 
-        0 0 15px rgba(255, 255, 255, 0.6),
-        0 0 30px rgba(135, 206, 235, 0.4);
-    animation: textFloat 5s ease-in-out infinite;
-}
-
-.intro-text strong {
-    font-size: 2.2rem;
-    font-weight: 800;
-    display: block;
+    font-size: 3.5rem;
+    font-weight: 700;
     margin-bottom: 0.5rem;
-    -webkit-text-stroke: 1px #87CEEB;
-    text-stroke: 1px #87CEEB;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.title-line {
-    font-size: 1.4rem;
+.professional-subtitle {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #87CEEB;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.contact-item {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(135, 206, 235, 0.1);
+    border-radius: 20px;
+    border: 1px solid rgba(135, 206, 235, 0.3);
+}
+
+/* Professional Body */
+.professional-body {
+    display: grid;
+    gap: 2.5rem;
+}
+
+.section {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(135, 206, 235, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: #87CEEB;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, #87CEEB, transparent);
+}
+
+/* Summary Section */
+.summary-text {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+}
+
+/* Education Section */
+.education-item {
+    border-left: 3px solid #87CEEB;
+    padding-left: 1.5rem;
+}
+
+.education-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.education-header h4 {
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin: 0;
+    font-weight: 600;
+}
+
+.education-date {
     color: #87CEEB;
     font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.education-school {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0.5rem 0;
+    font-weight: 500;
+}
+
+.education-minor {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
     font-style: italic;
-    letter-spacing: 2px;
 }
 
-.about-description {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: #ffffff;
-    margin-bottom: 1.5rem;
-    text-shadow: 
-        0 0 8px rgba(255, 255, 255, 0.5),
-        0 0 15px rgba(135, 206, 235, 0.3);
-    animation: textFloat 6s ease-in-out infinite;
-    animation-delay: 0.3s;
+/* Professional Experience Section */
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-.expertise-areas {
-    margin: 2rem 0;
-    padding: 1.5rem;
+.experience-item {
     border-left: 3px solid #87CEEB;
-    background: rgba(135, 206, 235, 0.05);
-    border-radius: 0 10px 10px 0;
+    padding-left: 1.5rem;
+    position: relative;
 }
 
-.expertise-areas h3 {
-    font-size: 1.5rem;
-    color: #87CEEB;
+.experience-item::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    background: #87CEEB;
+    border-radius: 50%;
+    border: 2px solid rgba(10, 15, 25, 1);
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     margin-bottom: 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 
-        0 0 10px rgba(135, 206, 235, 0.8),
-        0 0 20px rgba(135, 206, 235, 0.4);
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
-.skills-list {
+.experience-title-group {
+    flex: 1;
+    min-width: 250px;
+}
+
+.experience-title {
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin: 0 0 0.3rem 0;
+    font-weight: 600;
+}
+
+.experience-company {
+    font-size: 1.1rem;
+    color: #87CEEB;
+    margin: 0;
+    font-weight: 500;
+}
+
+.experience-date {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    font-size: 1rem;
+    background: rgba(135, 206, 235, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    border: 1px solid rgba(135, 206, 235, 0.3);
+    white-space: nowrap;
+}
+
+.experience-responsibilities {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.skills-list li {
-    font-size: 1.1rem;
-    color: #ffffff;
-    margin-bottom: 0.8rem;
-    padding-left: 1.5rem;
+.experience-responsibilities li {
     position: relative;
-    text-shadow: 
-        0 0 5px rgba(255, 255, 255, 0.4);
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    font-size: 1rem;
 }
 
-.skills-list li::before {
+.experience-responsibilities li::before {
     content: "▶";
-    color: #87CEEB;
     position: absolute;
     left: 0;
+    color: #87CEEB;
     font-size: 0.8rem;
-    text-shadow: 0 0 10px rgba(135, 206, 235, 0.8);
+    top: 0.1rem;
 }
 
-.personal-note {
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-category {
+    background: rgba(135, 206, 235, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(135, 206, 235, 0.15);
+}
+
+.skill-category-title {
     font-size: 1.1rem;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.9);
-    margin-top: 2rem;
-    font-style: italic;
-    text-align: center;
-    text-shadow: 
-        0 0 8px rgba(255, 255, 255, 0.4),
-        0 0 15px rgba(135, 206, 235, 0.2);
-    animation: textFloat 7s ease-in-out infinite;
-    animation-delay: 1s;
+    color: #87CEEB;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-tag {
+    background: linear-gradient(45deg, rgba(135, 206, 235, 0.2), rgba(135, 206, 235, 0.1));
+    color: #ffffff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(135, 206, 235, 0.3);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.skill-tag:hover {
+    background: rgba(135, 206, 235, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Achievements Section */
+.achievements-list {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.achievement-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.achievement-icon {
+    font-size: 2rem;
+    min-width: 60px;
+    text-align: center;
+    background: rgba(135, 206, 235, 0.1);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(135, 206, 235, 0.3);
+}
+
+.achievement-content h4 {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.achievement-content p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Back button - More professional */
+.back-button {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background: rgba(135, 206, 235, 0.1);
+    color: #87CEEB;
+    border: 2px solid rgba(135, 206, 235, 0.3);
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 1001;
+}
+
+.back-button:hover {
+    background: rgba(135, 206, 235, 0.2);
+    border-color: #87CEEB;
+    transform: translateY(-2px);
+}
+
+/* Action section */
 .about-action {
-    margin: 3rem auto;
+    margin: 3rem auto 0;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 1rem;
 }
 
@@ -837,6 +1001,11 @@ body {
     color: white;
 }
 
+.video-btn {
+    background: linear-gradient(45deg, #e91e63, #f06292);
+    color: white;
+}
+
 .action-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
@@ -1194,56 +1363,16 @@ body {
     }
     
     /* Welcome & About screen mobile */
-    .welcome-content, .about-content {
+    .welcome-content {
         padding: 1.5rem 1rem;
         max-width: 95%;
     }
     
-    .welcome-title, .about-title {
+    .welcome-title {
         font-size: 3rem;
         margin-bottom: 2rem;
         letter-spacing: 4px;
         -webkit-text-stroke: 2px #87CEEB;
-    }
-    
-    .intro-text {
-        font-size: 1.4rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .intro-text strong {
-        font-size: 1.8rem;
-    }
-    
-    .title-line {
-        font-size: 1.1rem;
-    }
-    
-    .about-description {
-        font-size: 1rem;
-        line-height: 1.6;
-        margin-bottom: 1.2rem;
-    }
-    
-    .expertise-areas {
-        margin: 1.5rem 0;
-        padding: 1rem;
-    }
-    
-    .expertise-areas h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.8rem;
-    }
-    
-    .skills-list li {
-        font-size: 0.95rem;
-        margin-bottom: 0.6rem;
-    }
-    
-    .personal-note {
-        font-size: 0.95rem;
-        line-height: 1.5;
-        margin-top: 1.5rem;
     }
     
     .enter-btn {
@@ -1256,45 +1385,88 @@ body {
         font-size: 0.9rem;
     }
     
+    /* About Me Page Mobile Responsive */
+    .about-content {
+        padding: 1rem;
+    }
+    
+    .about-title {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .professional-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .contact-info {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .contact-item {
+        font-size: 0.9rem;
+    }
+    
+    .section {
+        padding: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .education-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .experience-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .experience-title-group {
+        min-width: 100%;
+    }
+    
+    .experience-title {
+        font-size: 1.2rem;
+    }
+    
+    .experience-company {
+        font-size: 1rem;
+    }
+    
+    .experience-date {
+        align-self: flex-start;
+        font-size: 0.9rem;
+    }
+    
+    .experience-responsibilities li {
+        font-size: 0.95rem;
+        padding-left: 1.2rem;
+    }
+    
+    .achievement-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .achievement-icon {
+        align-self: center;
+    }
+    
     .back-button {
         top: 1rem;
         left: 1rem;
         padding: 0.7rem 1.2rem;
         font-size: 0.9rem;
-    }
-    
-    .header {
-        min-width: 300px;
-        padding: 12px 20px;
-    }
-    
-    .header h1 {
-        font-size: 1.5rem;
-        letter-spacing: 1px;
-    }
-    
-    .solar-back-button {
-        left: 15px;
-        top: 70px;
-        padding: 0.7rem 1.2rem;
-        font-size: 0.9rem;
-    }
-    
-    .solar-back-button {
-        left: 10px;
-        top: 60px;
-        padding: 0.6rem 1rem;
-        font-size: 0.8rem;
-    }
-    
-    .header {
-        min-width: 280px;
-        padding: 10px 15px;
-        top: 10px;
-    }
-    
-    .header h1 {
-        font-size: 1.3rem;
-        letter-spacing: 0.5px;
     }
 } 

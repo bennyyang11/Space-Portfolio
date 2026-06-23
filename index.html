@@ -23,11 +23,9 @@
             <div class="camera-controls">
                 <h3>Camera Controls</h3>
                 <div class="control-item">
-                    <span class="control-icon">🖱️</span>
                     <span class="control-text">Drag to rotate</span>
                 </div>
                 <div class="control-item">
-                    <span class="control-icon">🎯</span>
                     <span class="control-text">Scroll to zoom</span>
                 </div>
             </div>
@@ -44,10 +42,10 @@
         <!-- Welcome Screen -->
         <div id="welcome-screen" class="welcome-screen">
             <div class="welcome-content">
-                <h1 class="welcome-title">Welcome to My Portfolio</h1>
+                <h1 class="welcome-title">Welcome to Benny's Portfolio</h1>
                 <div class="welcome-action">
                     <button id="continue-btn" class="enter-btn">
-                        ✨ Continue
+                        Continue
                     </button>
                     <p class="enter-hint">Discover my journey</p>
                 </div>
@@ -63,9 +61,9 @@
                         <h1 class="about-title">Benjamin Yang</h1>
                         <h2 class="professional-subtitle">Software Engineer & Technology Innovator</h2>
                         <div class="contact-info">
-                            <span class="contact-item">📧 benny.yang@gauntletai.com</span>
-                            <span class="contact-item">📍 Aurora, Colorado</span>
-                            <span class="contact-item">🎓 University of Colorado Boulder</span>
+                            <span class="contact-item">Benjamin.Yang.Career@gmail.com</span>
+                            <span class="contact-item">Aurora, Colorado</span>
+                            <span class="contact-item">University of Colorado Boulder</span>
                         </div>
                     </div>
                 </div>
@@ -99,31 +97,47 @@
                             <div class="experience-item">
                                 <div class="experience-header">
                                     <div class="experience-title-group">
-                                        <h4 class="experience-title">Cloud Desktop Engineer Intern</h4>
-                                        <p class="experience-company">IBM • Denver, CO (Remote)</p>
+                                        <h4 class="experience-title">Software Engineer</h4>
+                                        <p class="experience-company">Replicated • Austin, TX</p>
                                     </div>
-                                    <span class="experience-date">Dec 2024 - Present</span>
+                                    <span class="experience-date">Aug 2025 - Present</span>
                                 </div>
                                 <ul class="experience-responsibilities">
-                                    <li>Design and implement authentication and authorization architecture for State Farm's Virtual Desktop as a Service (DaaS) solution using AWS WorkSpaces</li>
-                                    <li>Develop backend logic to route clients to nearest AWS regions for optimal performance and accessibility</li>
-                                    <li>Automate cloud infrastructure deployments using Terraform, improving deployment speed and consistency</li>
-                                    <li>Provision and manage AWS cloud resources including EC2 instances for secure, scalable virtual desktop environments</li>
+                                    <li>Reduced customer egress costs by creating a Cloudflare R2 cache between the end-customer and vendor's registry, enabling an additional $700k/year revenue stream based on a fraction of savings</li>
+                                    <li>Built an LLM-agent support-bundle analysis pipeline in Go over an RBAC-aware auto-collector, raising Kubernetes diagnostic accuracy and reducing false positives by 95%</li>
+                                    <li>Led a multi-tenant notifications platform from alpha to general availability with email and webhook delivery, license-expiry alerts, and app-level filtering on a polling-based engine used by 100+ vendors</li>
+                                    <li>Developed the foundational auto-collector and analysis subsystem for an open-source Kubernetes support-bundle CLI in Go, including an RBAC-aware collection framework and a multi-backend analysis pipeline with LLM-agent integration</li>
+                                    <li>Optimized embedded-cluster airgap installs to bundle binaries and auto-clean bundles, eliminating all external network calls for full offline deployment and reducing install time by 60%</li>
+                                </ul>
+                            </div>
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <div class="experience-title-group">
+                                        <h4 class="experience-title">Cloud Engineer Intern</h4>
+                                        <p class="experience-company">IBM • Denver, CO</p>
+                                    </div>
+                                    <span class="experience-date">Dec 2024 - Jul 2025</span>
+                                </div>
+                                <ul class="experience-responsibilities">
+                                    <li>Developed and implemented the authentication and authorization architecture for State Farm's Virtual Desktop as a Service (DaaS) solution using AWS WorkSpaces, supporting 5,000+ supervised employee desktops</li>
+                                    <li>Reduced connection latency by ~35% by routing clients to the nearest AWS regions</li>
+                                    <li>Automated cloud infrastructure deployments using Terraform, improving deployment speed and consistency across environments</li>
+                                    <li>Provisioned and managed AWS cloud resources, including EC2 instances, scaling to support 1,000+ concurrent virtual desktops</li>
                                 </ul>
                             </div>
                             <div class="experience-item">
                                 <div class="experience-header">
                                     <div class="experience-title-group">
                                         <h4 class="experience-title">IT Intern</h4>
-                                        <p class="experience-company">Lavnar Education • Denver, CO</p>
+                                        <p class="experience-company">Lavner Education • Denver, CO</p>
                                     </div>
                                     <span class="experience-date">Jun 2023 - Aug 2023</span>
                                 </div>
                                 <ul class="experience-responsibilities">
-                                    <li>Created comprehensive class agendas, curriculum, and project ideas for high school summer coding camps serving up to 12 students per week</li>
-                                    <li>Instructed fundamental coding concepts including syntax, pseudo-code, data structures (queues, stacks, binary search trees, linked lists)</li>
-                                    <li>Trained students in problem-solving techniques and debugging methodologies to identify and resolve code errors</li>
-                                    <li>Conducted thorough code reviews and managed grading processes for all student projects and assessments</li>
+                                    <li>Created class agendas, curriculum, and project ideas for high school summer coding camps of up to 12 new students per week</li>
+                                    <li>Instructed fundamental coding concepts including syntax, pseudo-code, queues and stacks, binary search trees, and doubly linked lists</li>
+                                    <li>Trained students through problem-solving techniques, including how to debug code to check for errors</li>
+                                    <li>Conducted code review for all projects and grading for the entire class</li>
                                 </ul>
                             </div>
                         </div>
@@ -177,37 +191,11 @@
                         </div>
                     </div>
 
-                    <div class="section projects-highlight">
-                        <h3 class="section-title">Key Achievements</h3>
-                        <div class="achievements-list">
-                            <div class="achievement-item">
-                                <div class="achievement-icon">🤖</div>
-                                <div class="achievement-content">
-                                    <h4>AI-Powered Applications</h4>
-                                    <p>Developed multiple AI-integrated applications including WordWiseAI and SnapConnect, demonstrating expertise in OpenAI integration and intelligent user experiences.</p>
-                                </div>
-                            </div>
-                            <div class="achievement-item">
-                                <div class="achievement-icon">🌐</div>
-                                <div class="achievement-content">
-                                    <h4>Full-Stack Solutions</h4>
-                                    <p>Built comprehensive web applications from concept to deployment, including real-time multiplayer games and political engagement platforms.</p>
-                                </div>
-                            </div>
-                            <div class="achievement-item">
-                                <div class="achievement-icon">⚡</div>
-                                <div class="achievement-content">
-                                    <h4>Performance Optimization</h4>
-                                    <p>Consistently delivered high-performance applications with focus on scalability, user experience, and modern development practices.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="about-action">
                     <button id="enter-portfolio-btn" class="enter-btn">
-                        🚀 Explore My Projects
+                        Explore My Projects
                     </button>
                     <p class="enter-hint">View my interactive project portfolio</p>
                 </div>
@@ -249,13 +237,13 @@
                     <!-- Action Buttons -->
                     <div class="action-buttons">
                         <a id="overlay-link" href="#" target="_blank" class="action-btn primary-btn">
-                            <span>🔗 View Code</span>
+                            <span>View Code</span>
                         </a>
                         <a id="overlay-demo" href="#" target="_blank" class="action-btn secondary-btn">
-                            <span>🚀 Live Demo</span>
+                            <span>Live Demo</span>
                         </a>
                         <a id="overlay-demo-video" href="#" target="_blank" class="action-btn video-btn">
-                            <span>🎥 Demo Video</span>
+                            <span>Demo Video</span>
                         </a>
                     </div>
                 </div>

@@ -30,17 +30,22 @@ class SpacePortfolio {
             targetLookAt: new THREE.Vector3()
         };
         
+        // Mobile touch state
+        this.touchStartX = 0;
+        this.touchStartY = 0;
+        this.touchMoveThreshold = 10; // pixels - if moved more than this, it's a drag not a tap
+        
         // Project data - you can modify this to add your actual projects
         this.projectData = {
             sun: {
                 title: "Contact Me - Let's Connect!",
                 description: "Thank you for exploring my solar system portfolio! I'm always excited to discuss new opportunities, collaborate on innovative projects, or simply connect with fellow developers and tech enthusiasts. Whether you're interested in full-stack development, AI integration, mobile applications, or cutting-edge web technologies, I'd love to hear from you. Feel free to reach out through any of the channels below - I typically respond within 24 hours and am always open to interesting conversations about technology, software engineering, and creative problem-solving.",
                 features: [
-                    "📧 Email: benny.yang@gauntletai.com",
-                    "💼 LinkedIn: Connect with me professionally",
-                    "💻 GitHub: Explore my code and contributions",
-                    "🚀 Open to new opportunities and collaborations",
-                    "☕ Always happy to chat about technology and innovation"
+                    "Email: Benjamin.Yang.Career@gmail.com",
+                    "LinkedIn: Connect with me professionally",
+                    "GitHub: Explore my code and contributions",
+                    "Open to new opportunities and collaborations",
+                    "Always happy to chat about technology and innovation"
                 ],
                 tech: ["Full-Stack Development", "AI Integration", "Mobile Apps", "Web Technologies", "Open Source"],
                 link: "https://github.com/bennyyang11",
@@ -572,6 +577,11 @@ class SpacePortfolio {
         window.addEventListener('click', this.onMouseClick.bind(this));
         window.addEventListener('mousemove', this.onMouseMove.bind(this));
         
+        // Mobile touch events for planet clicking
+        window.addEventListener('touchstart', this.onTouchStart.bind(this), { passive: false });
+        window.addEventListener('touchend', this.onTouchEnd.bind(this), { passive: false });
+        window.addEventListener('touchmove', this.onTouchMove.bind(this), { passive: false });
+        
         // Window and screen resize handling
         window.addEventListener('resize', this.onWindowResize.bind(this));
         
@@ -648,32 +658,52 @@ class SpacePortfolio {
         // Continue button to go from Welcome to About
         const continueBtn = document.getElementById('continue-btn');
         if (continueBtn) {
-            continueBtn.addEventListener('click', () => {
+            const handleContinue = () => {
                 this.showAboutScreen();
+            };
+            continueBtn.addEventListener('click', handleContinue);
+            continueBtn.addEventListener('touchend', (e) => {
+                e.preventDefault(); // Prevent double-firing with click
+                handleContinue();
             });
         }
 
         // Enter Portfolio button to go from About to Solar System
         const enterPortfolioBtn = document.getElementById('enter-portfolio-btn');
         if (enterPortfolioBtn) {
-            enterPortfolioBtn.addEventListener('click', () => {
+            const handleEnter = () => {
                 this.enterPortfolio();
+            };
+            enterPortfolioBtn.addEventListener('click', handleEnter);
+            enterPortfolioBtn.addEventListener('touchend', (e) => {
+                e.preventDefault(); // Prevent double-firing with click
+                handleEnter();
             });
         }
 
         // Back button to go from About back to Welcome
         const backBtn = document.getElementById('back-button');
         if (backBtn) {
-            backBtn.addEventListener('click', () => {
+            const handleBack = () => {
                 this.goBackToWelcome();
+            };
+            backBtn.addEventListener('click', handleBack);
+            backBtn.addEventListener('touchend', (e) => {
+                e.preventDefault(); // Prevent double-firing with click
+                handleBack();
             });
         }
 
         // Solar system back button to go from Solar System back to About
         const solarBackBtn = document.getElementById('solar-back-button');
         if (solarBackBtn) {
-            solarBackBtn.addEventListener('click', () => {
+            const handleSolarBack = () => {
                 this.goBackToAbout();
+            };
+            solarBackBtn.addEventListener('click', handleSolarBack);
+            solarBackBtn.addEventListener('touchend', (e) => {
+                e.preventDefault(); // Prevent double-firing with click
+                handleSolarBack();
             });
         }
     }
@@ -972,6 +1002,43 @@ class SpacePortfolio {
         document.body.style.cursor = intersects.length > 0 ? 'pointer' : 'default';
     }
 
+    // Mobile touch event handlers
+    onTouchStart(event) {
+        if (event.touches.length === 1) {
+            const touch = event.touches[0];
+            this.touchStartX = touch.clientX;
+            this.touchStartY = touch.clientY;
+        }
+    }
+
+    onTouchMove(event) {
+        // Prevent default scrolling behavior during touch moves
+        event.preventDefault();
+    }
+
+    onTouchEnd(event) {
+        // Only handle single finger taps for planet selection
+        if (this.cameraState !== 'overview' || this.interactionBlocked) return;
+        
+        if (event.changedTouches.length === 1) {
+            const touch = event.changedTouches[0];
+            const deltaX = Math.abs(touch.clientX - this.touchStartX);
+            const deltaY = Math.abs(touch.clientY - this.touchStartY);
+            
+            // Only register as tap if movement is minimal (not a drag)
+            if (deltaX < this.touchMoveThreshold && deltaY < this.touchMoveThreshold) {
+                console.log('Touch tap detected!', touch.clientX, touch.clientY);
+                
+                // Use existing click detection logic by creating a synthetic click event
+                const syntheticEvent = {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                };
+                this.onMouseClick(syntheticEvent);
+            }
+        }
+    }
+
     onKeyDown(event) {
         switch(event.code) {
             case 'Space':
@@ -1150,8 +1217,8 @@ class SpacePortfolio {
             if (projectKey === 'sun') {
                 // Special handling for contact page - make email clickable
                 featuresElement.innerHTML = project.features.map(feature => {
-                    if (feature.includes('benny.yang@gauntletai.com')) {
-                        return `<li>📧 Email: <a href="mailto:benny.yang@gauntletai.com" style="color: #87CEEB; text-decoration: underline;">benny.yang@gauntletai.com</a></li>`;
+                    if (feature.includes('Benjamin.Yang.Career@gmail.com')) {
+                        return `<li>Email: <a href="mailto:Benjamin.Yang.Career@gmail.com" style="color: var(--resume-accent); text-decoration: underline;">Benjamin.Yang.Career@gmail.com</a></li>`;
                     }
                     return `<li>${feature}</li>`;
                 }).join('');
@@ -1176,9 +1243,9 @@ class SpacePortfolio {
             const linkText = linkElement.querySelector('span');
             if (linkText) {
                 if (projectKey === 'sun') {
-                    linkText.textContent = '💻 GitHub Profile';
+                    linkText.textContent = 'GitHub Profile';
                 } else {
-                    linkText.textContent = '🔗 View Code';
+                    linkText.textContent = 'View Code';
                 }
             }
         } else if (linkElement) {
@@ -1195,9 +1262,9 @@ class SpacePortfolio {
             const demoText = demoElement.querySelector('span');
             if (demoText) {
                 if (projectKey === 'sun') {
-                    demoText.textContent = '💼 LinkedIn Profile';
+                    demoText.textContent = 'LinkedIn Profile';
                 } else {
-                    demoText.textContent = '🚀 Live Demo';
+                    demoText.textContent = 'Live Demo';
                 }
             }
         } else if (demoElement) {
